@@ -15,7 +15,10 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-        <Background></Background>
+        <IntroSection>
+          <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
+          <h4 className="typography-headline4">web designer <br/>& developer.</h4>
+        </IntroSection>
         <AboutSection id="about">
           <AboutSectionTitle>About</AboutSectionTitle>
         </AboutSection>
@@ -30,14 +33,38 @@ class Home extends React.Component {
   }
 }
 
-const Background = styled(HomeSection)`
+const IntroSection = styled(HomeSection)`
   background-image: url('/img/home_background.jpg');
   margin-top: calc(var(--header-height) * -1);
   min-height: 680px;
+  padding: 64px 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: var(--gray__100);
+
+  h2, h4 {
+    position: relative;
+  }
+
+  h2 {
+    text-align: right;
+    margin-bottom: 8px;
+  }
+
+  h4 {
+    margin-bottom: 12px;
+    padding-left: 36px;
+  }
+
+  @media (max-width: 540px) {
+    flex-direction: column;
+    padding: 48px;
+  }
 
   &::before {
     background: rgb(49,24,71);
-    background: linear-gradient(164deg, rgba(49,24,71,1) 0%, rgba(123,36,76,1) 76%, rgba(104,26,59,.6) 100%);
+    background: linear-gradient(-30deg, rgba(49,24,71,1) 0%, rgba(123,36,76,1) 76%, rgba(104,26,59,.6) 100%);
     opacity: 0.8;
   }
 `

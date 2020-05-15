@@ -31,22 +31,25 @@ body {
 .typography-headline2 {
   font-family: var(--typography--primary);
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 48px;
+  margin: 0;
 }
 
 .typography-headline3 {
   font-family: "Gotham Narrow Book";
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 36px;
+  margin: 0;
 }
 
 .typography-headline4 {
   font-family: var(--typography--primary);
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 28px;
+  margin: 0;
 }
 
 .typography-subtitle {
