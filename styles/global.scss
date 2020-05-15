@@ -14,9 +14,10 @@ body {
   margin: 0;
   margin-bottom: var(--footer-height);
   padding-top: var(--header-height);
-  min-height: 100vh;
+  min-height: calc(100vh - var(--footer-height));
   box-sizing: border-box;
   box-shadow: 0px 2px 8px rgba(0,0,0,.2);
+  background-color: white;
 }
 
 .typography-headline1 {

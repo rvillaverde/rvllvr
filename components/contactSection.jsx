@@ -73,7 +73,7 @@ class ContactSection extends React.Component {
             <TextInput label="Your name" name="name" id="name-input" type="text"></TextInput>
             <TextInput label="Your email" name="email" id="email-input" type="text"></TextInput>
             <Textarea label="Message" name="message" id="message-input"></Textarea>
-            <Button label="Send" type="button">Send</Button>
+            <Button type="button">Send</Button>
           </form>
         </ContactSubsection>
       </Section>

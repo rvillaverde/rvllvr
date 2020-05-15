@@ -44,6 +44,7 @@ const Header = styled.header`
   height: var(--header-height);
   display: flex;
   z-index: 24;
+  overflow: hidden;
   
   &:before {
     content: "";
@@ -64,12 +65,19 @@ const HeaderNav = styled.nav`
   margin: 0 auto;
   display: flex;
   position: relative;
+  
+  @media (max-width: 460px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
 `
 
 const HeaderSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 
   &:last-child {
     margin-left: auto;

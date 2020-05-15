@@ -3,12 +3,38 @@ import Router from 'next/router';
 import Link from 'next/link';
 import fetch from 'node-fetch'
 import { Cookies } from 'react-cookie';
+import Layout from '../components/layout'
+import ViewportContainer from '../components/viewportContainer'
+import styled from "styled-components"
+import TextInput from '../components/textInput'
+import Button from '../components/button'
+
+const Container = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--footer-height));
+  margin-top: calc(var(--header-height) * -1);
+  padding-top: var(--header-height);
+  background-color: var(--color-tertiary);
+  box-sizing: border-box;
+`
+const MyForm = styled.form`
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+`
+const Legend = styled.p`
+  color: var(--gray__100);
+`
 
 const cookies = new Cookies();
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { invalid: false };
     cookies.set('token', undefined);
   }
 
@@ -30,28 +56,26 @@ class Login extends React.Component {
       Router.push('/admin')
     } else {
       console.log('usuario o contraseña incorrectos')
+      this.setState({ invalid: true });
     }
   }
 
   render() {
     return (
-      <div>
-        <h2>Login page</h2>
-        <br></br>
-        <form  onSubmit={ this.onLogin }>
-          <input type="text" name="username" placeholder="username"/>
-          <input type="password" name="password" placeholder="password"/>
-          <button type="submit">Login</button>
-        </form>
-        <br></br>
-        <Link href="/work">
-          <a>Work</a>
-        </Link>
-        <br></br>
-        <Link href="/admin">
-          <a>Admin</a>
-        </Link>
-      </div >
+      <Layout>
+        <Container>
+          <MyForm onSubmit={ this.onLogin }>
+            <TextInput label="Username" name="username" id="username-input" type="text"></TextInput>
+            <TextInput label="Password" name="password" id="password-input" type="password"></TextInput>
+            { this.state.invalid && 
+              <Legend className="typography-body">
+                User or password incorrect.
+              </Legend>
+            }
+            <Button type="submit">Login</Button>
+          </MyForm>
+        </Container>
+      </Layout>
     )
   }
 }
