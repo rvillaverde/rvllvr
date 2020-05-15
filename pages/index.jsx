@@ -33,7 +33,7 @@ class Home extends React.Component {
 const Background = styled(HomeSection)`
   background-image: url('/img/home_background.jpg');
   margin-top: calc(var(--header-height) * -1);
-  min-height: 640px;
+  min-height: 680px;
 
   &::before {
     background: rgb(49,24,71);

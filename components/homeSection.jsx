@@ -6,6 +6,7 @@ const HomeTitle = styled.h1`
   margin: -8px;
   line-height: 220px;
   position: absolute;
+  user-select: none;
 
   @media (max-width: 460px) {
     font-size: 100px;
