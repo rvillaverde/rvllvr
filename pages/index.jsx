@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Layout from '../components/layout'
 import WorkSection from "../components/workSection"
 import ContactSection from "../components/contactSection"
+import ViewportContainer from '../components/viewportContainer'
 import { HomeSection, HomeTitle } from "../components/homeSection"
 
 class Home extends React.Component {
@@ -16,8 +17,10 @@ class Home extends React.Component {
     return (
       <Layout>
         <IntroSection>
-          <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
-          <h4 className="typography-headline4">web designer <br/>& developer.</h4>
+          <MyViewportContainer>
+            <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
+            <h4 className="typography-headline4">web designer <br/>& developer.</h4>
+          </MyViewportContainer>
         </IntroSection>
         <AboutSection id="about">
           <AboutSectionTitle>About</AboutSectionTitle>
@@ -33,15 +36,13 @@ class Home extends React.Component {
   }
 }
 
-const IntroSection = styled(HomeSection)`
-  background-image: url('/img/home_background.jpg');
-  margin-top: calc(var(--header-height) * -1);
-  min-height: 680px;
-  padding: 64px 80px;
-  display: flex;
-  justify-content: flex-end;
+const MyViewportContainer = styled(ViewportContainer)`
   align-items: flex-end;
   color: var(--gray__100);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0;
 
   h2, h4 {
     position: relative;
@@ -59,13 +60,31 @@ const IntroSection = styled(HomeSection)`
 
   @media (max-width: 540px) {
     flex-direction: column;
-    padding: 48px;
+    padding: 0;
+
+    h4 {
+      text-align: right;
+    }
   }
+`
+
+const IntroSection = styled(HomeSection)`
+  background-image: url('/img/home_background.jpg');
+  margin-top: calc(var(--header-height) * -1);
+  min-height: 680px;
+  padding: 64px 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
   &::before {
     background: rgb(49,24,71);
     background: linear-gradient(-30deg, rgba(49,24,71,1) 0%, rgba(123,36,76,1) 76%, rgba(104,26,59,.6) 100%);
     opacity: 0.8;
+  }
+
+  @media (max-width: 540px) {
+    padding: 48px;
   }
 `
 const AboutSection = styled(HomeSection)`
