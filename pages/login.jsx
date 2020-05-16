@@ -23,10 +23,11 @@ const Container = styled.div`
 const MyForm = styled.form`
   padding: 24px;
   width: 100%;
-  max-width: 320px;
+  max-width: 400px;
 `
 const Legend = styled.p`
   color: var(--gray__100);
+  margin-bottom: 12px;
 `
 
 const cookies = new Cookies();

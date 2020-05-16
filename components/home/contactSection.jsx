@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import TextInput from './textInput'
-import Textarea from './textarea'
-import Button from './button'
+import TextInput from '../textInput'
+import Textarea from '../textarea'
+import Button from '../button'
 
 import { HomeSection, HomeTitle } from "./homeSection"
 

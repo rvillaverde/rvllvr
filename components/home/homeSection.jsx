@@ -14,7 +14,7 @@ const HomeTitle = styled.h1`
     margin: -8px -4px;
   }
 `
-const HomeSection = styled.div`
+const HomeSection = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -3,10 +3,10 @@ import Link from 'next/link';
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import WorkSection from "../components/workSection"
-import ContactSection from "../components/contactSection"
+import WorkSection from "../components/home/workSection"
+import ContactSection from "../components/home/contactSection"
 import ViewportContainer from '../components/viewportContainer'
-import { HomeSection, HomeTitle } from "../components/homeSection"
+import { HomeSection, HomeTitle } from "../components/home/homeSection"
 
 class Home extends React.Component {
   constructor(props) {
