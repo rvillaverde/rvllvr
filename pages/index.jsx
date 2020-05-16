@@ -27,7 +27,12 @@ class Home extends React.Component {
           <AboutViewportContainer>
             <ProfilePic></ProfilePic>
             <p className="typography-body">
-            Full stack developer with over 10 years experience working with different companies and technologies. Proactive and deeply analytical, as well as creative, curious and detail-oriented. I have a great autodidact ability, as I’m always looking to learn new things to improve my work. Currently working freelance for different clients, designing and developing websites and applications.
+            Full stack developer with over 10 years experience working with different companies and technologies.
+            <br/>
+            Proactive and deeply analytical, as well as creative, curious and detail-oriented.
+            I have a great autodidact ability, as I’m always looking to learn new things to improve my work.
+            <br/>
+            Currently working freelance for different clients, designing and developing websites and applications.
             </p>
           </AboutViewportContainer>
         </AboutSection>

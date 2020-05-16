@@ -29,7 +29,7 @@ const ContactSubsection = styled.div`
   position: relative;
   color: white;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     text-align: left;
     width: 100%;
 

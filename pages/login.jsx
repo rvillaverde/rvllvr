@@ -14,7 +14,7 @@ const Container = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - var(--footer-height));
+  min-height: calc(100vh - var(--footer-height));
   margin-top: calc(var(--header-height) * -1);
   padding-top: var(--header-height);
   background-color: var(--color-tertiary);
