@@ -14,7 +14,7 @@ export function AppLayout({ children }) {
         <meta
           name="Romina Villaverde"
           content="Web developer with an eye on design."
-          />
+        />
         <meta name="og:title" content={siteTitle} />
       </Head>
         

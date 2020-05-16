@@ -27,5 +27,29 @@ module.exports = {
         reject(err);
       });
     });
+  },
+  updateSkill: function(id, fields) {
+    return new Promise(async (resolve, reject) => {
+      models.skill.update(
+        fields,
+        { where: { skill_id: id } }
+      ).then(updated => {
+        resolve(updated[0]);
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  },
+  deleteSkill: function(id) {
+    return new Promise(async (resolve, reject) => {
+      models.skill.destroy({
+        where: { skill_id: id }
+      }).then(deleted => {
+        console.log(deleted)
+        resolve(deleted);
+      }).catch(err => {
+        reject(err);
+      });
+    });
   }
 };

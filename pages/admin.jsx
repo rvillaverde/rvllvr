@@ -2,6 +2,7 @@ import React from 'react';
 import { handleAuthSSR } from '../utils/auth';
 import Layout from '../components/layout'
 import ViewportContainer from '../components/viewportContainer'
+import SkillSection from '../components/admin/skillSection'
 import styled from "styled-components"
 
 const MyViewportContainer = styled(ViewportContainer)`
@@ -18,8 +19,7 @@ class Admin extends React.Component {
     return (
       <Layout>
         <ViewportContainer>
-          <h2>Admin page</h2>
-          <p>Admin user logged in!</p>
+          <SkillSection />
         </ViewportContainer>
       </Layout>
     )

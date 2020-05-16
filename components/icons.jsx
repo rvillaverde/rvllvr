@@ -26,3 +26,13 @@ export const LinkedInIcon = () =>
   <path fill="#EADCED" d="M0.6,10.4c1.9,0,3.9,0,5.8,0c0,5.9,0,11.7,0,17.6c-1.9,0-3.9,0-5.8,0C0.6,22.2,0.6,16.3,0.6,10.4z"/>
   <path fill="#EADCED" d="M7,3.5c0,2-1.6,3.5-3.5,3.5C1.6,7,0,5.5,0,3.5C0,1.6,1.6,0,3.5,0C5.4,0,7,1.6,7,3.5z"/>
 </svg>;
+
+export const CrossIcon = () =>
+<svg vx="0px" y="0px" width="10" height="10" viewBox="0 0 12 12">
+  <polygon fill="#fefdff" points="12.3,1 11.6,0.3 6.3,5.6 0.7,0 0,0.7 5.6,6.3 0.3,11.6 1,12.3 6.3,7 11.3,12 12,11.3 7,6.3 "/>
+</svg>;
+
+export const PlusIcon = () =>
+<svg vx="0px" y="0px" width="12" height="12" viewBox="0 0 12 12">
+  <polygon fill="#fefdff" points="12,5.8 6.5,5.8 6.5,0 5.5,0 5.5,5.8 0,5.8 0,6.8 5.5,6.8 5.5,12 6.5,12 6.5,6.8 12,6.8 "/>
+</svg>;

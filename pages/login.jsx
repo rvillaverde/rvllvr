@@ -6,8 +6,9 @@ import { Cookies } from 'react-cookie';
 import Layout from '../components/layout'
 import ViewportContainer from '../components/viewportContainer'
 import styled from "styled-components"
-import TextInput from '../components/textInput'
-import Button from '../components/button'
+import TextInput from '../components/forms/textField'
+import FormRow from '../components/forms/formRow'
+import Button from '../components/buttons/primaryButton'
 
 const Container = styled.div`
   display: flex;
@@ -65,9 +66,13 @@ class Login extends React.Component {
     return (
       <Layout>
         <Container>
-          <MyForm onSubmit={ this.onLogin }>
-            <TextInput label="Username" name="username" id="username-input" type="text"></TextInput>
-            <TextInput label="Password" name="password" id="password-input" type="password"></TextInput>
+          <MyForm onSubmit={ this.onLogin } autoComplete="off">
+            <FormRow>
+              <TextInput label="Username" name="username" id="username-input" type="text"></TextInput>
+            </FormRow>
+            <FormRow>
+              <TextInput label="Password" name="password" id="password-input" type="password" autoComplete="off"></TextInput>
+            </FormRow>
             { this.state.invalid && 
               <Legend className="typography-body">
                 User or password incorrect.

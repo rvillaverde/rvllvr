@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import TextInput from '../textInput'
-import Textarea from '../textarea'
-import Button from '../button'
+import FormRow from '../forms/formRow'
+import TextInput from '../forms/textField'
+import Textarea from '../forms/textareaField'
+import Button from '../buttons/primaryButton'
 
 import { HomeSection, HomeTitle } from "./homeSection"
 
@@ -70,9 +71,15 @@ class ContactSection extends React.Component {
         </ContactSubsection>
         <ContactSubsection>
           <form>
-            <TextInput label="Your name" name="name" id="name-input" type="text"></TextInput>
-            <TextInput label="Your email" name="email" id="email-input" type="text"></TextInput>
-            <Textarea label="Message" name="message" id="message-input"></Textarea>
+            <FormRow>
+              <TextInput label="Your name" name="name" id="name-input" type="text"></TextInput>
+            </FormRow>
+            <FormRow>
+              <TextInput label="Your email" name="email" id="email-input" type="text"></TextInput>
+            </FormRow>
+            <FormRow>
+              <Textarea label="Message" name="message" id="message-input"></Textarea>
+            </FormRow>
             <Button type="button">Send</Button>
           </form>
         </ContactSubsection>
