@@ -10,7 +10,7 @@ export default function Layout({ children }) {
     <div>
       <Head>
         <title>Romina Villaverde</title>
-        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/fonts/GothamNarrow/style.css" rel="stylesheet" />
         <meta
           name="Romina Villaverde"
