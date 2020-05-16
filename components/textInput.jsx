@@ -14,7 +14,7 @@ const Input = styled.input`
   height: 36px;
   padding: 8px;
   font-family: var(--typography-primary);
-  color: var(--gray__500);
+  color: var(--gray__600);
   width: 100%;
 `
 

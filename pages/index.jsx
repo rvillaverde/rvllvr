@@ -17,13 +17,19 @@ class Home extends React.Component {
     return (
       <Layout>
         <IntroSection>
-          <MyViewportContainer>
+          <IntroViewportContainer>
             <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
             <h4 className="typography-headline4">web designer <br/>& developer.</h4>
-          </MyViewportContainer>
+          </IntroViewportContainer>
         </IntroSection>
         <AboutSection id="about">
           <AboutSectionTitle>About</AboutSectionTitle>
+          <AboutViewportContainer>
+            <ProfilePic></ProfilePic>
+            <p className="typography-body">
+            Full stack developer with over 10 years experience working with different companies and technologies. Proactive and deeply analytical, as well as creative, curious and detail-oriented. I have a great autodidact ability, as I’m always looking to learn new things to improve my work. Currently working freelance for different clients, designing and developing websites and applications.
+            </p>
+          </AboutViewportContainer>
         </AboutSection>
         <InfoSection id="info"></InfoSection>
         <SkillSection id="skils">
@@ -36,7 +42,7 @@ class Home extends React.Component {
   }
 }
 
-const MyViewportContainer = styled(ViewportContainer)`
+const IntroViewportContainer = styled(ViewportContainer)`
   align-items: flex-end;
   color: var(--gray__100);
   display: flex;
@@ -67,7 +73,6 @@ const MyViewportContainer = styled(ViewportContainer)`
     }
   }
 `
-
 const IntroSection = styled(HomeSection)`
   background-image: url('/img/home_background.jpg');
   margin-top: calc(var(--header-height) * -1);
@@ -91,6 +96,44 @@ const AboutSection = styled(HomeSection)`
   &::before {
     background-color: var(--color-secondary__200);
     opacity: 0.48;
+  }
+`
+const AboutViewportContainer = styled(ViewportContainer)`
+  align-items: flex-start;
+  color: var(--color-tertiary);
+  display: flex;
+  justify-content: center;
+  max-width: 640px;
+  padding: 88px 0 !important;
+  position: relative;
+  
+  @media (max-width: 540px) {
+    flex-direction: column;
+    padding: 64px 24px !important;
+    align-items: center;
+  
+    p {
+      text-align: center;
+    }
+  }
+`
+const ProfilePic = styled.div`
+  width: 220px;
+  min-width: 220px;
+  flex-srink: 1;
+  background-color: var(--gray__100);
+  border-radius: 50%;
+  margin-right: 64px;
+
+  @media (max-width: 540px) {
+    margin-right: 0;
+    margin-bottom: 48px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
   }
 `
 const AboutSectionTitle = styled(HomeTitle)`
