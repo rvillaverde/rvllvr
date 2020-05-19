@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'http://localhost:3000/projects';
+const apiUrl = 'https://rvllvr.herokuapp.com/projects';
+// onst apiUrl = 'http://localhost:3000/projects';
 
 export async function createProject(project) {
   const res = await fetch(apiUrl, {

@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'http://localhost:3000/skills';
+const apiUrl = 'https://rvllvr.herokuapp.com/skills';
+// const apiUrl = 'http://localhost:3000/skills';
 
 export async function createSkill(skill) {
   const res = await fetch(apiUrl, {
