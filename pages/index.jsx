@@ -12,35 +12,6 @@ import SkillSection from "../components/home/skillSection"
 import ViewportContainer from '../components/viewportContainer'
 import { HomeSection, HomeTitle } from "../components/home/homeSection"
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  static async getInitialProps() {
-    const projects = await getProjects();
-    const skills = await getSkills();
-    return { projects, skills }
-  }
-
-  render() {
-    return (
-      <Layout>
-        <IntroSection>
-          <IntroViewportContainer>
-            <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
-            <h4 className="typography-headline4">web designer <br/>& developer.</h4>
-          </IntroViewportContainer>
-        </IntroSection>
-        <AboutSection></AboutSection>
-        <AbilitiesSection></AbilitiesSection>
-        <SkillSection skills={ this.props.skills }></SkillSection>
-        <WorkSection projects={ this.props.projects }></WorkSection>
-        <ContactSection></ContactSection>
-      </Layout>
-    )
-  }
-}
-
 const IntroViewportContainer = styled(ViewportContainer)`
   align-items: flex-end;
   color: var(--gray__100);
@@ -91,5 +62,34 @@ const IntroSection = styled(HomeSection)`
     padding: 48px;
   }
 `
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  static async getInitialProps() {
+    const projects = await getProjects();
+    const skills = await getSkills();
+    return { projects, skills }
+  }
+
+  render() {
+    return (
+      <Layout>
+        <IntroSection>
+          <IntroViewportContainer>
+            <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
+            <h4 className="typography-headline4">web designer <br/>& developer.</h4>
+          </IntroViewportContainer>
+        </IntroSection>
+        <AboutSection></AboutSection>
+        <AbilitiesSection></AbilitiesSection>
+        <SkillSection skills={ this.props.skills }></SkillSection>
+        <WorkSection projects={ this.props.projects }></WorkSection>
+        <ContactSection></ContactSection>
+      </Layout>
+    )
+  }
+}
 
 export default Home;

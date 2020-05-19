@@ -10,6 +10,8 @@ export function AppLayout({ children }) {
   return (
     <Layout>
       <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/fonts/GothamNarrow/style.css" rel="stylesheet" />
         <title>Romina Villaverde</title>
         <meta
           name="Romina Villaverde"
