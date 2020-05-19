@@ -7,7 +7,6 @@ const models = require('./src/models');
 
 const port =  process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production'
-console.log({dev})
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
