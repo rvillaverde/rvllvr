@@ -1,23 +1,23 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'http://localhost:3000/skills';
+const apiUrl = 'http://localhost:3000/projects';
 
-export async function createSkill(skill) {
+export async function createProject(project) {
   const res = await fetch(apiUrl, {
     method: 'POST',
-    body: JSON.stringify(skill),
+    body: JSON.stringify(project),
     headers: { 'Content-Type': 'application/json' }
   });
 
   return await res.json()
 }
 
-export async function getSkills() {
+export async function getProjects() {
   const res = await fetch(apiUrl)
   return await res.json();
 }
 
-export async function editSkill(id, fields) {
+export async function editProject(id, fields) {
   const res = await fetch(`${ apiUrl }/${ id }/edit`, {
     method: 'POST',
     body: JSON.stringify(fields),
@@ -26,7 +26,7 @@ export async function editSkill(id, fields) {
   return res.json();
 }
 
-export async function deleteSkill(id) {
+export async function deleteProject(id) {
   const res = await fetch(`${ apiUrl }/delete`, {
     method: 'POST',
     body: JSON.stringify({id}),

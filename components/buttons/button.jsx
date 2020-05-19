@@ -8,8 +8,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-tertiary);
-    border-color: var(--color-tertiary);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 
   &:active {

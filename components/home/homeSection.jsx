@@ -25,6 +25,7 @@ const HomeSection = styled.section`
   overflow: hidden;
 
   @media (max-width: 460px) {
+    padding: 96px 0;
     min-height: 100vh;
   }
 

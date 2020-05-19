@@ -13,7 +13,7 @@ class AppHeader extends React.Component {
         <HeaderNav>
           <HeaderSection>
             <Link href="/">
-              <HeaderLink>Romina Villaverde</HeaderLink>
+              <HeaderLink href="/">Romina Villaverde</HeaderLink>
             </Link>
           </HeaderSection>
           <HeaderSection>
@@ -89,6 +89,7 @@ const HeaderLink = styled.a`
   color: var(--color-tertiary);
   cursor: pointer;
   padding: 12px 24px;
+  text-decoration: none;
 
   &:hover {
     color: var(--color-primary);

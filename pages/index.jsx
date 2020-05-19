@@ -1,16 +1,25 @@
 import React from 'react';
+import { getProjects } from '../utils/projects'
+import { getSkills } from '../utils/skills'
 import Link from 'next/link';
 import styled from "styled-components"
 
 import Layout from '../components/layout'
 import WorkSection from "../components/home/workSection"
 import ContactSection from "../components/home/contactSection"
+import AbilitiesSection from "../components/home/abilitiesSection"
+import SkillSection from "../components/home/skillSection"
 import ViewportContainer from '../components/viewportContainer'
 import { HomeSection, HomeTitle } from "../components/home/homeSection"
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+  }
+  static async getInitialProps() {
+    const projects = await getProjects();
+    const skills = await getSkills();
+    return { projects, skills }
   }
 
   render() {
@@ -36,11 +45,9 @@ class Home extends React.Component {
             </p>
           </AboutViewportContainer>
         </AboutSection>
-        <InfoSection id="info"></InfoSection>
-        <SkillSection id="skils">
-          <SkillSectionTitle>Skills</SkillSectionTitle>
-        </SkillSection>
-        <WorkSection></WorkSection>
+        <AbilitiesSection></AbilitiesSection>
+        <SkillSection skills={ this.props.skills }></SkillSection>
+        <WorkSection projects={ this.props.projects }></WorkSection>
         <ContactSection></ContactSection>
       </Layout>
     )
@@ -98,6 +105,10 @@ const IntroSection = styled(HomeSection)`
   }
 `
 const AboutSection = styled(HomeSection)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &::before {
     background-color: var(--color-secondary__200);
     opacity: 0.48;
@@ -109,12 +120,11 @@ const AboutViewportContainer = styled(ViewportContainer)`
   display: flex;
   justify-content: center;
   max-width: 640px;
-  padding: 88px 0 !important;
   position: relative;
   
   @media (max-width: 540px) {
     flex-direction: column;
-    padding: 64px 24px !important;
+    padding: 0 24px !important;
     align-items: center;
   
     p {
@@ -147,25 +157,20 @@ const AboutSectionTitle = styled(HomeTitle)`
   bottom: 0;
   color: var(--gray__100);
 `
-const InfoSection = styled(HomeSection)`
-  &::before {
-    background: rgb(104,26,59);
-    background: linear-gradient(-30deg, rgba(104,26,59,1) 0%, rgba(123,36,76,1) 100%);
-  }
-`
-const SkillSection = styled(HomeSection)`
-  min-height: 444px;
+
+// const SkillSection = styled(HomeSection)`
+//   min-height: 444px;
   
-  &::before {
-    background-color: var(--color-complementary__04);
-    opacity: 40%;
-  }
-`
-const SkillSectionTitle = styled(HomeTitle)`
-  opacity: .24;
-  left: 0;
-  bottom: 0;
-  color: var(--color-complementary__04);
-`
+//   &::before {
+//     background-color: var(--color-complementary__04);
+//     opacity: 40%;
+//   }
+// `
+// const SkillSectionTitle = styled(HomeTitle)`
+//   opacity: .24;
+//   left: 0;
+//   bottom: 0;
+//   color: var(--color-complementary__04);
+// `
 
 export default Home;

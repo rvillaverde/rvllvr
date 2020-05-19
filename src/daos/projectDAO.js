@@ -1,38 +1,38 @@
 const models  = require('../models');
 
 module.exports = {
-  getSkills: function() {
+  getProjects: function() {
     return new Promise((resolve, reject) => {
-      models.skill.findAll().then(skills => {
-        resolve(skills);
+      models.project.findAll().then(projects => {
+        resolve(projects);
       }).catch(err => {
         reject(err);
       });
     });
   },
-  getSkill: function(id) {
+  getProject: function(id) {
     return new Promise((resolve, reject) => {
-      models.skill.findByPk(id).then(skill => {
-        resolve(skill);
+      models.project.findByPk(id).then(project => {
+        resolve(project);
       }).catch(err => {
         reject(err);
       });
     });
   },
-  createSkill: function(skill) {
+  createProject: function(project) {
     return new Promise(async (resolve, reject) => {
-      models.skill.create(skill).then(skill => {
-        resolve(skill);
+      models.project.create(project).then(project => {
+        resolve(project);
       }).catch(err => {
         reject(err);
       });
     });
   },
-  updateSkill: function(id, fields) {
+  updateProject: function(id, fields) {
     return new Promise(async (resolve, reject) => {
-      models.skill.update(
+      models.project.update(
         fields,
-        { where: { skill_id: id } }
+        { where: { project_id: id } }
       ).then(updated => {
         resolve(updated[0]);
       }).catch(err => {
@@ -40,10 +40,10 @@ module.exports = {
       });
     });
   },
-  deleteSkill: function(id) {
+  deleteProject: function(id) {
     return new Promise(async (resolve, reject) => {
-      models.skill.destroy({
-        where: { skill_id: id }
+      models.project.destroy({
+        where: { project_id: id }
       }).then(deleted => {
         resolve(deleted);
       }).catch(err => {

@@ -9,6 +9,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+*::selection {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
 body {
   font-family: var(--typography--primary);
   margin: 0;
@@ -38,9 +43,11 @@ body {
 
 .typography-headline3 {
   font-family: "Gotham Narrow Book";
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 32px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
   margin: 0;
 }
 

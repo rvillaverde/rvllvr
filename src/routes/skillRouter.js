@@ -24,7 +24,6 @@ router.post('/:id/edit', async(req, res) => {
 router.post('/delete', async(req, res) => {
   let skill_id = req.body.id;
   let deleted = await SkillService.deleteSkill(skill_id);
-  console.log(deleted)
   res.status(200).send({ deleted });
 })
 
