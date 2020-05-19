@@ -4,10 +4,10 @@ import React from 'react';
 import '../styles/global.scss'
 
 class MyApp extends App {
-  static async getInitialProps({Component, ctx}) {
-    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-    return {pageProps: pageProps};
- }
+//   static async getInitialProps({Component, ctx}) {
+//     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+//     return {pageProps: pageProps};
+//  }
 
   render() {
     const {Component, pageProps} = this.props;

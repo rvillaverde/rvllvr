@@ -4,14 +4,18 @@ import Footer from './footer'
 import styled from "styled-components"
 
 const name = 'Romina Villaverde'
-export const siteTitle = 'Romina Villaverde'
+const siteTitle = 'Romina Villaverde'
+
+const Layout = styled.div`
+background-color: white;
+`
 
 export function AppLayout({ children }) {
   return (
     <Layout>
       <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/fonts/GothamNarrow/style.css" rel="stylesheet" />
+        <link type="text/css" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link type="text/css" href="/fonts/GothamNarrow/style.css" rel="stylesheet" />
         <title>Romina Villaverde</title>
         <meta
           name="Romina Villaverde"
@@ -22,13 +26,9 @@ export function AppLayout({ children }) {
         
       <AppHeader name={name}></AppHeader>
       <main>{children}</main>
-
       <Footer />
     </Layout>
   )
 }
 
-const Layout = styled.div`
-background-color: white;
-`
 export default AppLayout;

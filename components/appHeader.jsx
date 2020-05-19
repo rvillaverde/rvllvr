@@ -2,6 +2,67 @@ import React from 'react';
 import Link from 'next/link'
 import styled from "styled-components";
 
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  z-index: 24;
+  overflow: hidden;
+  
+  &:before {
+    content: "";
+    background-color: var(--gray__100);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0.9;
+  }
+`
+const HeaderNav = styled.nav`
+  max-width: var(--viewport-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  
+  @media (max-width: 460px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+`
+const HeaderSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  &:last-child {
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+`
+const HeaderLink = styled.a`
+  color: var(--color-tertiary);
+  cursor: pointer;
+  padding: 12px 24px;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:active {
+    color: var(--color-secondary);
+  }
+`
+
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -35,70 +96,5 @@ class AppHeader extends React.Component {
     );
   }
 }
-
-const Header = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--header-height);
-  display: flex;
-  z-index: 24;
-  overflow: hidden;
-  
-  &:before {
-    content: "";
-    background-color: var(--gray__100);
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    opacity: 0.9;
-  }
-`;
-
-const HeaderNav = styled.nav`
-  max-width: var(--viewport-width);
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  position: relative;
-  
-  @media (max-width: 460px) {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
-`
-
-const HeaderSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-
-  &:last-child {
-    margin-left: auto;
-    justify-content: flex-end;
-  }
-`;
-
-const HeaderLink = styled.a`
-  color: var(--color-tertiary);
-  cursor: pointer;
-  padding: 12px 24px;
-  text-decoration: none;
-
-  &:hover {
-    color: var(--color-primary);
-  }
-
-  &:active {
-    color: var(--color-secondary);
-  }
-
-`;
 
 export default AppHeader;
