@@ -74,7 +74,7 @@ class AppHeader extends React.Component {
         <HeaderNav>
           <HeaderSection>
             <Link href="/">
-              <HeaderLink href="/">Romina Villaverde</HeaderLink>
+              <HeaderLink href="/">Romi Villaverde</HeaderLink>
             </Link>
           </HeaderSection>
           <HeaderSection>

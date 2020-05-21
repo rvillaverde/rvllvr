@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import FormRow from '../forms/formRow'
-import TextInput from '../forms/textField'
+import TextField from '../forms/textField'
 import Textarea from '../forms/textareaField'
 import Button from '../buttons/primaryButton'
 
@@ -14,6 +14,10 @@ const Section = styled(HomeSection)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  input, textarea {
+    border-color: white;
+  }
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -72,10 +76,10 @@ class ContactSection extends React.Component {
         <ContactSubsection>
           <form>
             <FormRow>
-              <TextInput label="Your name" name="name" id="name-input" type="text"></TextInput>
+              <TextField label="Your name" name="name" id="name-input" type="text"></TextField>
             </FormRow>
             <FormRow>
-              <TextInput label="Your email" name="email" id="email-input" type="text"></TextInput>
+              <TextField label="Your email" name="email" id="email-input" type="text"></TextField>
             </FormRow>
             <FormRow>
               <Textarea label="Message" name="message" id="message-input"></Textarea>

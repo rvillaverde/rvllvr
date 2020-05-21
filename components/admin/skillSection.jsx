@@ -1,5 +1,5 @@
 import React from 'react'
-import { getSkills, createSkill, editSkill, deleteSkill } from '../../utils/skills'
+import { createSkill, editSkill, deleteSkill } from '../../utils/skills'
 
 import styled from "styled-components"
 import FormField from '../forms/formField'
@@ -8,7 +8,7 @@ import NumberField from '../forms/numberField'
 import Button from '../buttons/primaryButton'
 import IconButton from '../buttons/iconButton'
 import { CrossIcon, PlusIcon } from '../icons'
-import { Table, TBody, Tr, Td } from '../tables/table'
+import { Table, TBody, Tr, Td, TdActions } from '../tables/table'
 
 
 let newSkillId = 'new-skill'
@@ -16,12 +16,8 @@ let newSkillId = 'new-skill'
 class SkillSection extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { skills: [] }
+    this.state = { skills: props.skills }
     this.handleAddSkill = this.handleAddSkill.bind(this);
-  }
-
-  componentDidMount() {
-    getSkills().then((skills) => this.setState({ skills: skills }))
   }
 
   async handleAddSkill(e) {
@@ -98,14 +94,14 @@ const SkillRow = function(props) {
       <Td>
         <NumberField name={ props.create ? 'ratio' : '' } dataName="ratio" value={props.skillRatio} onBlur={ props.updateHandler } required></NumberField>
       </Td>
-      <Td>
+      <TdActions>
         <FormField>
           { props.create
             ? <IconButton type="submit"><PlusIcon/></IconButton>
             : <IconButton type="button" onClick={ props.actionHandler }><CrossIcon/></IconButton>
           }
         </FormField>
-      </Td>
+      </TdActions>
     </Tr>
   );
 }
@@ -113,15 +109,22 @@ const SkillRow = function(props) {
 const Section = styled.section`
   background-color: white;
   padding: 24px 0;
+  max-width: 840px;
+  margin: auto;
 
   form {
     margin: auto;
     padding: 24px 0;
-    width: fit-content;
+    width: 100%;
+    max-width: 460px;
   }
 
   @media (min-width: 1280px) {
-    padding: 0 24px;
+    padding: 24px;
+
+    form {
+      padding: 0 24px;
+    }
   }
 `
 const Title = styled.h4`

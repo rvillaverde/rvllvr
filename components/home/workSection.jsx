@@ -37,13 +37,16 @@ const ProjectCard = styled.a`
   cursor: pointer;
   box-shadow: 0px 0px 8px white;
   transition: all .3s ease-in-out;
+  background-color: var(--color-tertiary__200);
+  background-image: url('${ (props) => props.cover }');
+  background-size: cover;
+  background-repeat: no-repeat;
   
   &::before {
     content: "";
     width: 100%;
     display: block;
     padding-top: 100%;
-    background-color: var(--color-tertiary__200);
   }
 
   &::after {
@@ -61,7 +64,7 @@ const ProjectCard = styled.a`
   }
   
   &:hover::after {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `
 const ProjectInfo = styled.div`
@@ -86,6 +89,7 @@ const ProjectInfo = styled.div`
     margin: 0;
     margin-bottom: 24px;
     color: var(--color-primary);
+    text-align: center;
   }
 
   hr {
@@ -137,8 +141,8 @@ class WorkSection extends React.Component {
         <WorkSectionTitle>Work</WorkSectionTitle>
         <ProjectGrid>
           { this.props.projects.map(project => (
-            <Link key={ project.project_id } href="/projects/[id]" as={`/projects/${project.product_id}`}>
-              <ProjectCard id={`skill-${ project.project_id }`}>
+            <Link key={ project.project_id } href="/work/[id]" as={`/work/${project.project_id}`}>
+              <ProjectCard id={`project-${ project.project_id }`} cover={ project.cover_url } href={`/work/${project.project_id}`}>
                 <ProjectInfo>
                   <h3 className="typography-headline3">{project.name}</h3>
                   <hr/>

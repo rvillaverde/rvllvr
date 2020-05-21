@@ -9,8 +9,8 @@ const Label = styled.label`
 `
 const Input = styled.input`
   outline: none;
-  border: 1px solid var(--color-tertiary);
-  background-color: var(--gray__100);
+  border: 1px solid var(--gray__200);
+  background-color: white;
   height: 36px;
   padding: 8px;
   font-family: var(--typography-primary);
@@ -35,7 +35,8 @@ class TextInput extends React.Component {
         }
         <Input id={ this.props.id }
                 name={ this.props.name }
-                data-name= { this.props.dataName }
+                data-name={ this.props.dataName }
+                placeholder={ this.props.placeholder }
                 type={ this.props.type }
                 defaultValue={ this.props.value }
                 required={ this.props.required }

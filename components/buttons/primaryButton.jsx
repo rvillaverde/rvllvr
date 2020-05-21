@@ -10,7 +10,9 @@ class PrimaryButton extends React.Component {
   
   render() {
     return (
-      <MyButton type={ this.props.type }>{ this.props.children }</MyButton>
+      <MyButton as={this.props.as} className={this.props.className} type={ this.props.type } onClick={ this.props.onClick } disabled={ this.props.disabled }>
+        { this.props.children }
+      </MyButton>
       );
     }
   }

@@ -16,8 +16,8 @@ const Label = styled.label`
 `
 const Input = styled.input`
   outline: none;
-  border: 1px solid var(--color-tertiary);
-  background-color: var(--gray__100);
+  border: 1px solid var(--gray__200);
+  background-color: white;
   height: 36px;
   padding: 8px;
   font-family: var(--typography-primary);

@@ -1,16 +1,20 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'https://rvllvr.herokuapp.com/projects';
-// onst apiUrl = 'http://localhost:3000/projects';
+// const apiUrl = 'https://rvllvr.herokuapp.com/projects';
+const apiUrl = 'http://localhost:3000/projects';
 
-export async function createProject(project) {
+export async function createProject(data) {
   const res = await fetch(apiUrl, {
     method: 'POST',
-    body: JSON.stringify(project),
-    headers: { 'Content-Type': 'application/json' }
+    body: data
   });
 
   return await res.json()
+}
+
+export async function getProject(id) {
+  const res = await fetch(`${ apiUrl }/${ id }`)
+  return res.json();
 }
 
 export async function getProjects() {
@@ -18,11 +22,10 @@ export async function getProjects() {
   return await res.json();
 }
 
-export async function editProject(id, fields) {
-  const res = await fetch(`${ apiUrl }/${ id }/edit`, {
+export async function editProject(data) {
+  const res = await fetch(`${ apiUrl }/edit`, {
     method: 'POST',
-    body: JSON.stringify(fields),
-    headers: { 'Content-Type': 'application/json' }
+    body: data
   });
   return res.json();
 }

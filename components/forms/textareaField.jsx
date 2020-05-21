@@ -10,7 +10,8 @@ const Label = styled.label`
 const Textarea = styled.textarea`
   outline: none;
   border: 0px;
-  background-color: var(--gray__100);
+  border: 1px solid var(--gray__200);
+  background-color: white;
   padding: 8px;
   font-family: var(--typography-primary);
   color: var(--gray__600);

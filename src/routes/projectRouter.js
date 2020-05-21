@@ -8,16 +8,23 @@ router.get('/', async(req, res) => {
   res.status(200).send(projects);
 })
 
+router.get('/:id', async(req, res) => {
+  let id = req.params.id;
+  let project = await ProjectService.getProject(id);
+  res.status(200).send(project);
+})
+
 router.post('/', async(req, res) => {
   let project = req.body;
-  let savedProject = await ProjectService.createProject(project);
+  let cover = req.files.cover;
+  let savedProject = await ProjectService.createProject(project, cover);
   res.status(200).send(savedProject);
 })
 
-router.post('/:id/edit', async(req, res) => {
-  let id = req.params.id;
-  let fields = req.body;
-  let updated = await ProjectService.updateProject(id, fields);
+router.post('/edit', async(req, res) => {
+  let project = req.body;
+  let cover = req.files ? req.files.cover : undefined;
+  let updated = await ProjectService.updateProject(project, cover);
   res.status(200).send({ updated });
 })
 

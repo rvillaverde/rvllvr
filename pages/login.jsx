@@ -1,10 +1,8 @@
 import React from 'react';
 import Router from 'next/router';
-import Link from 'next/link';
 import fetch from 'node-fetch'
 import { Cookies } from 'react-cookie';
 import Layout from '../components/layout'
-import ViewportContainer from '../components/viewportContainer'
 import styled from "styled-components"
 import TextInput from '../components/forms/textField'
 import FormRow from '../components/forms/formRow'

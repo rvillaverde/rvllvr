@@ -1,5 +1,7 @@
-import styled from "styled-components"
+import Link from 'next/link'
+import Button from './button'
 
+import styled from "styled-components"
 const Button = styled.button`
   background-color: var(--color-secondary);
   outline: none;
@@ -15,18 +17,14 @@ const Button = styled.button`
   &:active {
     transform: scale(0.96);
   }
-
-  &:disabled {
-    cursor: default;
-    opacity: 0.5;
-  }
 `
-export function MyButton(props) {
-  return (
-    <Button as={ props.as }className={`typography-body ${props.className}`} type={ props.type } onClick={props.onClick} disabled={ props.disabled }>
-      { props.children }
-    </Button>
-  );
-}
 
-export default MyButton;
+export default function LinkButton(props) {
+  return (
+    <Link href={ props.href }>
+      <Button href={ props.href }>
+        { props.children }
+      </Button>
+    </Link>
+  )
+}
