@@ -89,10 +89,8 @@ class ContactSection extends React.Component {
   async handleSubmit(e) {
     e.preventDefault()
     this.setState({ loading: true })
-    console.log('fom submit')
     let formData = new FormData(e.target)
     let res = await sendContactEmail(formData)
-    console.log(res)
     if (res.status === 200) {
       this.setState({ success: true, error: false, loading: false })
     } else {

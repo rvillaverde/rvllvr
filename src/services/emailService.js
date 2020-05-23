@@ -22,7 +22,6 @@ function sendEmail(emailData) {
 
 class EmailService {
   static sendContactEmail(contact) {
-    console.log(contact)
     let emailData = {
       from: 'Romi Villaverde Web <no-reply@romivillaverde.com>',
       to: email,

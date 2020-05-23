@@ -5,7 +5,6 @@ const ProjectService = require('../services/projectService');
 
 router.get('/', async(req, res) => {
   let query = req.query;
-  console.log('query params', query)
   let projects;
   if (Object.keys(query).length) {
     projects = await ProjectService.findProject(query);
