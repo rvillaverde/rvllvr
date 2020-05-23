@@ -71,11 +71,6 @@ const ParallaxImage = styled(Parallax)`
     margin: 0;
   }
 `
-// const ParallaxImage = () => (
-//   <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
-//       <img src="/img/home_background.jpg" />
-//   </Parallax>
-// );
 
 class Home extends React.Component {
   constructor(props) {
@@ -91,9 +86,6 @@ class Home extends React.Component {
     return (
       <Layout home>
         <IntroSection id="home">
-          {/* <ParallaxImage className="custom-class" y={[-20, 20]} tagOuter="figure">
-              <img src="/img/home_background.jpg" />
-          </ParallaxImage> */}
           <Parallax image="/img/home_background.jpg">
           </Parallax>
           <IntroViewportContainer>

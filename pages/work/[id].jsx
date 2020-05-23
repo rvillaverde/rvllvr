@@ -1,5 +1,5 @@
 import React from 'react'
-import { findProject } from '../../utils/projects';
+import { findProject, getProjects } from '../../utils/projects';
 
 import styled from "styled-components"
 
@@ -8,6 +8,8 @@ import ViewportContainer from '../../components/viewportContainer'
 import PrimaryButton from '../../components/buttons/primaryButton'
 import { LinkIcon } from '../../components/icons'
 import ContactSection from '../../components/home/contactSection'
+import ProjectCard from '../../components/projectCard'
+import { HomeSection, HomeTitle } from "../../components/home/homeSection"
 
 
 class ProjectDetail extends React.Component {
@@ -17,7 +19,8 @@ class ProjectDetail extends React.Component {
 
   static getInitialProps = async (ctx) => {
     const project = await findProject('internal_url', ctx.query.id)
-    return { project }
+    const projects = await getProjects()
+    return { project, projects }
   }
 
   render() {
@@ -35,12 +38,46 @@ class ProjectDetail extends React.Component {
             <ProjectImage key={ image.image_id } src={ image.image_url }></ProjectImage>
           ))}
         </Section>
+        <WorkHomeSection id="work">
+          <WorkSectionTitle>View more</WorkSectionTitle>
+            <ProjectWrapper>
+              { this.props.projects.map(project => (
+                project.project_id != this.props.project.project_id && 
+                  <ProjectCard key={ project.project_id } project={project} />
+              ))}
+            </ProjectWrapper>
+          </WorkHomeSection>
         <ContactSection></ContactSection>
       </Layout>
     )
   }
 }
 
+const WorkHomeSection = styled(HomeSection)`
+  padding: 96px 0;
+
+  @media (max-width: 460px) {
+    min-height: unset;
+    padding: 48px 0;
+  }
+`
+const WorkSectionTitle = styled(HomeTitle)`
+  opacity: .12;
+  left: 0;
+  bottom: 0;
+  color: var(--color-tertiary__200);
+  font-size: 240px;
+  margin: -24px -12px;
+`
+const ProjectWrapper = styled(ViewportContainer)`
+&& {
+  display: flex;
+  
+  > a:not(:first-child) {
+    margin-left: 24px;
+  }
+}
+`
 const Section = styled(ViewportContainer)`
   background-color: white;
   max-width: 840px;
