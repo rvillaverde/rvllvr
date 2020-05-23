@@ -4,7 +4,14 @@ const router = express.Router();
 const ProjectService = require('../services/projectService');
 
 router.get('/', async(req, res) => {
-  let projects = await ProjectService.getProjects();
+  let query = req.query;
+  console.log('query params', query)
+  let projects;
+  if (Object.keys(query).length) {
+    projects = await ProjectService.findProject(query);
+  } else {
+    projects = await ProjectService.getProjects();
+  }
   res.status(200).send(projects);
 })
 

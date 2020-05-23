@@ -23,6 +23,18 @@ module.exports = {
       });
     });
   },
+  findProject: function(field) {
+    return new Promise((resolve, reject) => {
+      models.project.findOne({
+        include: [{ model: models.project_image, as: 'images' }],
+        where: field
+      }).then(projects => {
+        resolve(projects);
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  },
   createProject: function(project) {
     return new Promise(async (resolve, reject) => {
       models.project.create(project).then(project => {

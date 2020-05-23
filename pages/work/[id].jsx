@@ -1,5 +1,5 @@
 import React from 'react'
-import { getProject } from '../../utils/projects';
+import { findProject } from '../../utils/projects';
 
 import styled from "styled-components"
 
@@ -16,7 +16,7 @@ class ProjectDetail extends React.Component {
   }
 
   static getInitialProps = async (ctx) => {
-    const project = await getProject(ctx.query.id)
+    const project = await findProject('internal_url', ctx.query.id)
     return { project }
   }
 

@@ -37,6 +37,10 @@ class ProjectService {
     return await ProjectDAO.getProject(id);
   }
 
+  static async findProject(field) {
+    return await ProjectDAO.findProject(field);
+  }
+
   static async createProject(project, cover, images) {
     let uploadedPhoto = await ImageService.uploadImage(cover);
     project.cover_url = uploadedPhoto.url;
@@ -53,7 +57,8 @@ class ProjectService {
       name: project.name,
       technologies: project.technologies,
       type: project.type,
-      url: project.url
+      url: project.url,
+      internal_url: project.internal_url
     }
     if (cover) fields.cover_url = await uploadPhoto(cover);
     let savedProject = await ProjectDAO.updateProject(id, fields);

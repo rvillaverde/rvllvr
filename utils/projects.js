@@ -17,6 +17,11 @@ export async function getProject(id) {
   return res.json();
 }
 
+export async function findProject(key, value) {
+  const res = await fetch(`${ apiUrl }?${ key }=${ value }`)
+  return res.json();
+}
+
 export async function getProjects() {
   const res = await fetch(apiUrl)
   return await res.json();

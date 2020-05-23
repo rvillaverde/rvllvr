@@ -17,6 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     url: {
       type: DataTypes.STRING
     },
+    internal_url: {
+      type: DataTypes.STRING
+    },
     cover_url: {
       type: DataTypes.STRING
     },

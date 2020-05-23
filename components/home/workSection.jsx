@@ -142,8 +142,8 @@ class WorkSection extends React.Component {
         <WorkSectionTitle>Work</WorkSectionTitle>
         <ProjectGrid>
           { this.props.projects.map(project => (
-            <Link key={ project.project_id } href="/work/[id]" as={`/work/${project.project_id}`}>
-              <ProjectCard id={`project-${ project.project_id }`} cover={ project.cover_url } href={`/work/${project.project_id}`}>
+            <Link key={ project.project_id } href="/work/[id]" as={`/work/${project.internal_url}`}>
+              <ProjectCard id={`project-${ project.project_id }`} cover={ project.cover_url } href={`/work/${project.internal_url}`}>
                 <ProjectInfo>
                   <h3 className="typography-headline3">{project.name}</h3>
                   <hr/>

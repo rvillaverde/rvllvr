@@ -10,9 +10,9 @@ module.exports = {
       });
     });
   },
-  bulkCreate: function(productImages) {
+  bulkCreate: function(projectImages) {
     return new Promise(async (resolve, reject) => {
-      models.project_image.bulkCreate(productImages).then(records => {
+      models.project_image.bulkCreate(projectImages).then(records => {
         resolve(records);
       }).catch(err => {
         reject(err);

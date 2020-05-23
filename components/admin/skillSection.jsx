@@ -26,8 +26,9 @@ class SkillSection extends React.Component {
     let skill = {
       name: row.querySelector('input[name=name]').value,
       ratio: row.querySelector('input[name=ratio]').value,
-      order:  Array.prototype.slice.call(document.querySelectorAll('#skill-form tr'))
-              .findIndex((tr) => tr.id === newSkillId) + 1
+      order: row.querySelector('input[name=order]').value
+      // order:  Array.prototype.slice.call(document.querySelectorAll('#skill-form tr'))
+      //         .findIndex((tr) => tr.id === newSkillId) + 1
     }
     let savedSkill = await createSkill(skill);
     document.getElementById('skill-form').reset();
@@ -71,6 +72,7 @@ class SkillSection extends React.Component {
                 <SkillRow key={ skill.skill_id } id={`skill-${ skill.skill_id }`}
                   skillName={ skill.name }
                   skillRatio={ skill.ratio }
+                  skillOrder={ skill.order }
                   actionHandler={ () => this.handleRemoveSkill(skill.skill_id) }
                   updateHandler={ (e) => this.handleUpdateSkill(skill.skill_id, e.target) }>
                 </SkillRow>
@@ -93,6 +95,9 @@ const SkillRow = function(props) {
       </Td>
       <Td>
         <NumberField name={ props.create ? 'ratio' : '' } dataName="ratio" value={props.skillRatio} onBlur={ props.updateHandler } required></NumberField>
+      </Td>
+      <Td>
+        <NumberField name={ props.create ? 'order' : '' } dataName="order" value={props.skillOrder} onBlur={ props.updateHandler } required></NumberField>
       </Td>
       <TdActions>
         <FormField>

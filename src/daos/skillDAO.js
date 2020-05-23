@@ -3,7 +3,11 @@ const models  = require('../models');
 module.exports = {
   getSkills: function() {
     return new Promise((resolve, reject) => {
-      models.skill.findAll().then(skills => {
+      models.skill.findAll({
+        order: [
+          ['order', 'ASC'],
+        ]
+      }).then(skills => {
         resolve(skills);
       }).catch(err => {
         reject(err);

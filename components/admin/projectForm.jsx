@@ -149,6 +149,9 @@ class ProjectForm extends React.Component {
               <TextField placeholder="Name" type="text" name="name" value={this.props.project ? this.props.project.name : ''} />
             </FormRow>
             <FormRow>
+              <TextField placeholder="Internal URL" type="text" name="internal_url" value={this.props.project ? this.props.project.internal_url : ''} />
+            </FormRow>
+            <FormRow>
               <TextField placeholder="Technologies" type="text" name="technologies" value={this.props.project ? this.props.project.technologies : ''} />
             </FormRow>
             <FormRow>
