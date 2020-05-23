@@ -75,8 +75,8 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Layout>
-        <IntroSection>
+      <Layout home>
+        <IntroSection id="home">
           <IntroViewportContainer>
             <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
             <h4 className="typography-headline4">web designer <br/>& developer.</h4>

@@ -10,9 +10,13 @@ import styled from "styled-components"
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   i:first-child:not(:last-child) {
     margin-right: 8px;
+  }
+  
+  span {
+    text-align: center;
   }
 
   &:hover {

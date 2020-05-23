@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import Router from 'next/router'
 import Link from 'next/link'
-import styled from "styled-components";
+import styled from "styled-components"
 
 const Header = styled.header`
   position: fixed;
@@ -49,23 +50,72 @@ const HeaderSection = styled.div`
   }
 `
 const HeaderLink = styled.a`
+  transition: all .3s ease-in-out;
   color: var(--color-tertiary);
   cursor: pointer;
   padding: 12px 24px;
   text-decoration: none;
+  font-weight: 500;
+  user-select: none;
 
   &:hover {
     color: var(--color-primary);
   }
 
-  &:active {
+  &.active {
     color: var(--color-secondary);
   }
 `
+const headerHeight = 80;
 
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
+    this.smoothScroll = this.smoothScroll.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
+  }
+
+  componentDidMount() {
+    if (this.props.home) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  smoothScroll(e) {
+    let sectionId = e.target.getAttribute('data-section')
+    if (this.props.home) {
+      let position = sectionId ? document.getElementById(sectionId).offsetTop - headerHeight : 0
+      window.scroll({top: position, left: 0, behavior: 'smooth' })
+    } else {
+      Router.push(`/#${ sectionId }`)
+    }
+  }
+  
+  getActiveSection() {
+    let sections = document.querySelectorAll('section')
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      return sections[sections.length-1].id
+    }
+    for (let i=0; i < sections.length; i++) {
+      let section = sections[i]
+      let top = section.getBoundingClientRect().top
+      let height = section.getBoundingClientRect().height
+      if (top <= headerHeight && top + height > headerHeight) {
+        return section.id
+      }
+    }
+  }
+  
+  handleScroll() {
+    let sectionId = this.getActiveSection()
+    let active = document.querySelector('.active[data-section]')
+    if (active) active.classList.remove('active')
+    active = document.querySelector(`[data-section=${ sectionId }]`)
+    if (active) active.classList.add('active')
   }
 
   render() {
@@ -74,22 +124,16 @@ class AppHeader extends React.Component {
         <HeaderNav>
           <HeaderSection>
             <Link href="/">
-              <HeaderLink href="/">Romi Villaverde</HeaderLink>
+              <HeaderLink href="/">
+                <img src="/img/logo.svg" alt="Romi Villaverde"/>
+              </HeaderLink>
             </Link>
           </HeaderSection>
           <HeaderSection>
-            <Link href="/">
-              <HeaderLink>Home</HeaderLink>
-            </Link>
-            <Link href="#about">
-              <HeaderLink>About</HeaderLink>
-            </Link>
-            <Link href="#work">
-              <HeaderLink>Work</HeaderLink>
-            </Link>
-            <Link href="#contact">
-              <HeaderLink>Contact</HeaderLink>
-            </Link>
+            <HeaderLink data-section="home" onClick={ this.smoothScroll }>Home</HeaderLink>
+            <HeaderLink data-section="about" onClick={ this.smoothScroll }>About</HeaderLink>
+            <HeaderLink data-section="work" onClick={ this.smoothScroll }>Work</HeaderLink>
+            <HeaderLink data-section="contact" onClick={ this.smoothScroll }>Contact</HeaderLink>
           </HeaderSection>
         </HeaderNav>
       </Header>

@@ -95,6 +95,7 @@ const ProjectInfo = styled.div`
   hr {
     transition: all .3s ease-in-out;
     border-top: 1px solid var(--color-primary);
+    border-bottom: 0;
     width: 40%;
     transform: scaleX(0);
     opacity: 0;

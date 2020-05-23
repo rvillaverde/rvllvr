@@ -10,7 +10,7 @@ const Layout = styled.div`
 background-color: white;
 `
 
-export function AppLayout({ children }) {
+export function AppLayout({ children, home }) {
   return (
     <Layout>
       <Head>
@@ -24,7 +24,7 @@ export function AppLayout({ children }) {
         <meta name="og:title" content={siteTitle} />
       </Head>
         
-      <AppHeader name={name}></AppHeader>
+      <AppHeader name={name} home={home}></AppHeader>
       <main>{children}</main>
       <Footer />
     </Layout>

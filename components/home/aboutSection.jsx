@@ -36,12 +36,18 @@ const AboutViewportContainer = styled(ViewportContainer)`
 }
 `
 const ProfilePic = styled.div`
-  width: 220px;
-  min-width: 220px;
+  width: 180px;
+  min-width: 180px;
   flex-srink: 1;
   background-color: var(--gray__100);
   border-radius: 50%;
   margin-right: 64px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('${ (props) => props.image }');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   @media (max-width: 540px) {
     margin-right: 0;
@@ -52,6 +58,13 @@ const ProfilePic = styled.div`
     content: "";
     display: block;
     padding-top: 100%;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    width: auto;
+    height: 100%;
   }
 `
 const AboutSectionTitle = styled(HomeTitle)`
@@ -73,13 +86,13 @@ class AboutSection extends React.Component {
       <AboutHomeSection id="about">
       <AboutSectionTitle>About</AboutSectionTitle>
       <AboutViewportContainer>
-        <ProfilePic></ProfilePic>
+        <ProfilePic image="/img/profile.jpg"></ProfilePic>
         <p className="typography-body">
         Full stack developer with over 10 years experience working with different companies and technologies.
         <br/>
         Proactive and deeply analytical, as well as creative, curious and detail-oriented.
         I have a great autodidact ability, as I’m always looking to learn new things to improve my work.
-        <br/>
+        <br/><br/>
         Currently working freelance for different clients, designing and developing websites and applications.
         </p>
       </AboutViewportContainer>

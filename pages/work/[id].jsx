@@ -7,6 +7,7 @@ import Layout from '../../components/layout'
 import ViewportContainer from '../../components/viewportContainer'
 import PrimaryButton from '../../components/buttons/primaryButton'
 import { LinkIcon } from '../../components/icons'
+import ContactSection from '../../components/home/contactSection'
 
 
 class ProjectDetail extends React.Component {
@@ -34,6 +35,7 @@ class ProjectDetail extends React.Component {
             <ProjectImage key={ image.image_id } src={ image.image_url }></ProjectImage>
           ))}
         </Section>
+        <ContactSection></ContactSection>
       </Layout>
     )
   }
