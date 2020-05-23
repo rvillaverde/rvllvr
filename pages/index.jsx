@@ -2,6 +2,7 @@ import React from 'react';
 import { getProjects } from '../utils/projects'
 import { getSkills } from '../utils/skills'
 import styled from "styled-components"
+import Parallax from '../components/parallax'
 
 import Layout from '../components/layout'
 import AboutSection from "../components/home/aboutSection"
@@ -19,6 +20,7 @@ const IntroViewportContainer = styled(ViewportContainer)`
   justify-content: flex-end;
   width: 100%;
   padding: 0;
+  z-index: 4;
 
   h2, h4 {
     position: relative;
@@ -44,7 +46,6 @@ const IntroViewportContainer = styled(ViewportContainer)`
   }
 `
 const IntroSection = styled(HomeSection)`
-  background-image: url('/img/home_background.jpg');
   margin-top: calc(var(--header-height) * -1);
   min-height: 680px;
   padding: 64px 80px;
@@ -56,12 +57,25 @@ const IntroSection = styled(HomeSection)`
     background: rgb(49,24,71);
     background: linear-gradient(-30deg, rgba(49,24,71,1) 0%, rgba(123,36,76,1) 76%, rgba(104,26,59,.6) 100%);
     opacity: 0.8;
+    z-index: 2;
   }
 
   @media (max-width: 540px) {
     padding: 48px;
   }
 `
+const ParallaxImage = styled(Parallax)`
+  && {
+    position: fixed;
+    z-index: 0;
+    margin: 0;
+  }
+`
+// const ParallaxImage = () => (
+//   <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
+//       <img src="/img/home_background.jpg" />
+//   </Parallax>
+// );
 
 class Home extends React.Component {
   constructor(props) {
@@ -77,6 +91,11 @@ class Home extends React.Component {
     return (
       <Layout home>
         <IntroSection id="home">
+          {/* <ParallaxImage className="custom-class" y={[-20, 20]} tagOuter="figure">
+              <img src="/img/home_background.jpg" />
+          </ParallaxImage> */}
+          <Parallax image="/img/home_background.jpg">
+          </Parallax>
           <IntroViewportContainer>
             <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
             <h4 className="typography-headline4">web designer <br/>& developer.</h4>
