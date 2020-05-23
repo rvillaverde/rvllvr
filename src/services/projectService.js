@@ -1,4 +1,6 @@
 const ProjectDAO = require('../daos/projectDAO')
+const ImageService = require('./imageService')
+const ProjectImageService = require('./projectImageService')
 const cloudinary = require('cloudinary').v2
 const streamifier = require('streamifier')
 
@@ -14,7 +16,7 @@ function uploadPhoto(photo) {
      { folder: "rvllvr" },
      function(error, result) {
        if (result) {
-         resolve(result.secure_url);
+         resolve(result.secure_url)
        } else {
          reject(error);
        }
@@ -24,7 +26,7 @@ function uploadPhoto(photo) {
    streamifier.createReadStream(photo.data).pipe(uploadStream);
   });
  }
- 
+
 
 class ProjectService {
   static async getProjects() {
@@ -35,20 +37,30 @@ class ProjectService {
     return await ProjectDAO.getProject(id);
   }
 
-  static async createProject(project, cover) {
-    project.cover_url = await uploadPhoto(cover);
-    return await ProjectDAO.createProject(project, { returning: true });
+  static async createProject(project, cover, images) {
+    let uploadedPhoto = await ImageService.uploadImage(cover);
+    project.cover_url = uploadedPhoto.url;
+    let savedProject = await ProjectDAO.createProject(project, { returning: true });
+    if (images) {
+      await ProjectImageService.createProjectImages(savedProject, images);
+    }
+    return savedProject;
   }
 
-  static async updateProject(project, cover) {
+  static async updateProject(project, cover, images) {
     let id = project.project_id;
-    let fields = { 
+    let fields = {
       name: project.name,
       technologies: project.technologies,
+      type: project.type,
       url: project.url
     }
     if (cover) fields.cover_url = await uploadPhoto(cover);
-    return await ProjectDAO.updateProject(id, fields);
+    let savedProject = await ProjectDAO.updateProject(id, fields);
+    if (images) {
+      await ProjectImageService.createProjectImages(project, images);
+    }
+    return savedProject;
   }
 
   static async deleteProject(id) {

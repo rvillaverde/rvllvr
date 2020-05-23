@@ -8,6 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING
     },
+    type: {
+      type: DataTypes.STRING
+    },
     technologies: {
       type: DataTypes.STRING
     },

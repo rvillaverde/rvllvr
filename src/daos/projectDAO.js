@@ -3,7 +3,9 @@ const models  = require('../models');
 module.exports = {
   getProjects: function() {
     return new Promise((resolve, reject) => {
-      models.project.findAll().then(projects => {
+      models.project.findAll({
+        include: [{ model: models.project_image, as: 'images' }]
+      }).then(projects => {
         resolve(projects);
       }).catch(err => {
         reject(err);
@@ -12,7 +14,9 @@ module.exports = {
   },
   getProject: function(id) {
     return new Promise((resolve, reject) => {
-      models.project.findByPk(id).then(project => {
+      models.project.findByPk(id, {
+        include: [{ model: models.project_image, as: 'images' }]
+      }).then(project => {
         resolve(project);
       }).catch(err => {
         reject(err);

@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Button from './button'
-
+// import Button from './button'
 import styled from "styled-components"
-const Button = styled.button`
+
+const Button = styled.a`
   background-color: var(--color-secondary);
   outline: none;
   border: 1px solid var(--color-secondary);

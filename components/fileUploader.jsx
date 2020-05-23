@@ -42,7 +42,8 @@ const Container = styled.div`
 
 export default function FileUploader(props) {
   const handleDrop = useCallback(acceptedFiles => {
-    if (acceptedFiles.length) props.onChange(acceptedFiles[0])
+    console.log(acceptedFiles)
+    if (acceptedFiles.length) props.onChange(acceptedFiles)
   }, [])
 
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
@@ -54,9 +55,7 @@ export default function FileUploader(props) {
   return (
     <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
       <input name={ props.name } {...getInputProps()} />
-      <p className='typography-body'>
         { props.children }
-      </p>
     </Container>
   )
 }

@@ -27,6 +27,7 @@ class NewProjectSection extends React.Component {
   async updateProject(formData) {
     this.setState({ loading: true })
     await editProject(formData)
+    this.setState({ loading: false })
     Router.push(`/admin`)
   }
 
@@ -35,7 +36,7 @@ class NewProjectSection extends React.Component {
       <Layout>
         <Section>
           <Title className="typography-headline4">New Project</Title>
-          <ProjectForm project={ this.props.project } onSubmit={ this.updateProject }/>
+          <ProjectForm project={ this.props.project } onSubmit={ this.updateProject } />
         </Section>
       </Layout>
     )

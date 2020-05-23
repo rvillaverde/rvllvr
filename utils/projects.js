@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'https://rvllvr.herokuapp.com/projects';
-// const apiUrl = 'http://localhost:3000/projects';
+// const apiUrl = 'https://rvllvr.herokuapp.com/projects';
+const apiUrl = 'http://localhost:3000/projects';
 
 export async function createProject(data) {
   const res = await fetch(apiUrl, {
@@ -23,6 +23,7 @@ export async function getProjects() {
 }
 
 export async function editProject(data) {
+  console.log(data.get('images'))
   const res = await fetch(`${ apiUrl }/edit`, {
     method: 'POST',
     body: data
@@ -30,7 +31,17 @@ export async function editProject(data) {
   return res.json();
 }
 
+export async function deleteImage(id) {
+  const res = await fetch(`${ apiUrl }/image/delete`, {
+    method: 'POST',
+    body: JSON.stringify({id}),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  return res.json();
+}
+
 export async function deleteProject(id) {
+  console.log(id)
   const res = await fetch(`${ apiUrl }/delete`, {
     method: 'POST',
     body: JSON.stringify({id}),

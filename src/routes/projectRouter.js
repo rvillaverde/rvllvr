@@ -17,14 +17,16 @@ router.get('/:id', async(req, res) => {
 router.post('/', async(req, res) => {
   let project = req.body;
   let cover = req.files.cover;
-  let savedProject = await ProjectService.createProject(project, cover);
+  let images = req.files.images;
+  let savedProject = await ProjectService.createProject(project, cover, images);
   res.status(200).send(savedProject);
 })
 
 router.post('/edit', async(req, res) => {
   let project = req.body;
   let cover = req.files ? req.files.cover : undefined;
-  let updated = await ProjectService.updateProject(project, cover);
+  let images = req.files ? req.files.images : undefined;
+  let updated = await ProjectService.updateProject(project, cover, images);
   res.status(200).send({ updated });
 })
 

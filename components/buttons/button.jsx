@@ -1,11 +1,19 @@
 import styled from "styled-components"
 
-const Button = styled.button`
+ const Button = styled.button`
   background-color: var(--color-secondary);
   outline: none;
   border: 1px solid var(--color-secondary);
   transition: all .3s ease-in-out;
   cursor: pointer;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i:first-child:not(:last-child) {
+    margin-right: 8px;
+  }
 
   &:hover {
     background-color: var(--color-primary);
@@ -21,12 +29,5 @@ const Button = styled.button`
     opacity: 0.5;
   }
 `
-export function MyButton(props) {
-  return (
-    <Button as={ props.as }className={`typography-body ${props.className}`} type={ props.type } onClick={props.onClick} disabled={ props.disabled }>
-      { props.children }
-    </Button>
-  );
-}
 
-export default MyButton;
+export default Button;

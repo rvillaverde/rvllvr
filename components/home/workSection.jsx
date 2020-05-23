@@ -64,7 +64,7 @@ const ProjectCard = styled.a`
   }
   
   &:hover::after {
-    opacity: 0.9;
+    opacity: 0.96;
   }
 `
 const ProjectInfo = styled.div`

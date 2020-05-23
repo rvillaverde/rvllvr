@@ -13,6 +13,7 @@ const handle = app.getRequestHandler()
 const authRouter = require('./src/routes/authRouter.js')
 const skillRouter = require('./src/routes/skillRouter.js')
 const projectRouter = require('./src/routes/projectRouter.js')
+const projectImageRouter = require('./src/routes/projectImageRouter.js')
 
 app.prepare().then(() => {
   const server = express()
@@ -26,6 +27,7 @@ app.prepare().then(() => {
   server.use('/auth', authRouter);
   server.use('/skills', skillRouter);
   server.use('/projects', projectRouter);
+  server.use('/projects/image', projectImageRouter);
 
   server.all('*', (req, res) => {
     return handle(req, res)

@@ -10,12 +10,12 @@ class IconButton extends React.Component {
   
   render() {
     return (
-      <MyButton className={this.props.className} type={ this.props.type } onClick={ this.props.onClick }>
+      <MyButton className={ this.props.className } type={ this.props.type } onClick={ this.props.onClick }>
         { this.props.children }
       </MyButton>
-      );
-    }
+    );
   }
+}
   
 const MyButton = styled(Button)`
 && {

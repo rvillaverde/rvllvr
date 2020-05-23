@@ -1,4 +1,6 @@
 import React from 'react'
+import Router from 'next/router'
+import { deleteProject } from '../../utils/projects'
 
 import styled from "styled-components"
 import IconButton from '../buttons/iconButton'
@@ -40,10 +42,12 @@ class ProjectSection extends React.Component {
 
   toggleDeleteModal(project_id) {
     this.setState({ deleteModalOpen: !this.state.deleteModalOpen, project_id: project_id })
+    this.deleteProject(project_id)
   }
 
-  deleteProject() {
-    console.log('delete project')
+  async deleteProject(id) {
+    await deleteProject(id);
+    Router.push(`/admin`)
   }
 
   render() {
