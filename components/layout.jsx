@@ -5,9 +5,10 @@ import styled from "styled-components"
 
 const name = 'Romi Villaverde'
 const siteTitle = 'Romi Villaverde'
+const description = "Web developer with an eye on design."
 
 const Layout = styled.div`
-background-color: white;
+  background-color: white;
 `
 
 export function AppLayout({ children, home }) {
@@ -19,9 +20,10 @@ export function AppLayout({ children, home }) {
         <title>{ siteTitle }</title>
         <meta
           name={ name }
-          content="Web developer with an eye on design."
+          content={ description }
         />
-        <meta name="og:title" content={siteTitle} />
+        <meta name="og:title" content={ siteTitle } />
+        <meta name="og:description" content={ description } />
         <meta property="og:url" content="https://www.romivillaverde.com" />
         <meta property="og:image" content="/img/icon.png" />
       </Head>
