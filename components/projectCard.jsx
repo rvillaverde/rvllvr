@@ -111,7 +111,7 @@ class ProjectCard extends React.Component {
   render() {
     return (
       <Link key={ this.props.project.project_id } href="/work/[id]" as={`/work/${ this.props.project.internal_url }`}>
-        <Card id={`project-${ this.props.project.project_id }`} cover={ this.props.project.cover_url } href={`/work/${ this.props.project.internal_url }`}>
+        <Card className={ this.props.className} id={`project-${ this.props.project.project_id }`} cover={ this.props.project.cover_url } href={`/work/${ this.props.project.internal_url }`}>
           <ProjectInfo>
             <h3 className="typography-headline3">{ this.props.project.name }</h3>
             <hr/>

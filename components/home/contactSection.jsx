@@ -19,7 +19,6 @@ const Section = styled(HomeSection)`
   }
 
   @media (max-width: 767px) {
-    flex-direction: column;
     padding: 36px 24px;
   }
 `
@@ -32,6 +31,10 @@ const ContactSectionInner = styled.div`
   align-items: center;
   justify-content: center;
   padding: 64px 0;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `
 const ContactSectionTitle = styled(HomeTitle)`
   opacity: .08;

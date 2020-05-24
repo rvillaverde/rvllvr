@@ -5,7 +5,6 @@ const router = express.Router();
 
 // POST method to send contact email
 router.post('/contact', function(request, response) {
-  console.log(request.body)
   let contact = request.body;
 
   EmailService.sendContactEmail(contact).then(function(res, error) {

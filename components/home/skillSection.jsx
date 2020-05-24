@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from "styled-components"
 import { HomeSection, HomeTitle } from "./homeSection"
+import VisibilitySensor from '../visibilitySensor'
 
 const SkillHomeSection = styled(HomeSection)`
   min-height: 444px;
@@ -37,7 +37,7 @@ const SkillWrapper = styled.div`
 `
 const Skill = styled.div`
   display: flex;
-  `
+`
 const SkillName = styled.p`
   color: var(--color-tertiary);
   margin: 0;
@@ -45,7 +45,7 @@ const SkillName = styled.p`
 `
 const SkillRatio = styled.span`
   position: relative;
-  height: 16px;
+  height: 12px;
   background-color: var(--gray__100);
   max-width: 240px;
   width: 100%;
@@ -53,10 +53,13 @@ const SkillRatio = styled.span`
   margin-left: auto;
 
   &::after {
+    transition: all .6s ease-in;
     background-color: var(--color-primary);
     content: "";
-    width: ${ (props) => props.ratio }%;
-    height: 16px;
+    opacity: ${ (props) => props.visible ? 1 : 0 };
+    width: ${ (props) => props.visible ? props.ratio : 0 }%;
+    transition-delay: ${ props => props.delay && props.visible ? `${ props.delay }` : 0 }s;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -69,22 +72,32 @@ const SkillRatio = styled.span`
 
 class SkillSection extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = { visible: false }
+    this.onChange = this.onChange.bind(this)
+  }
+
+  onChange(isVisible) {
+    if (!this.state.visible) {
+      this.setState({ visible: isVisible })
+    }
   }
   
   render() {
     return (
-      <SkillHomeSection id="skills">
-        <SkillSectionTitle>Skills</SkillSectionTitle>
-        <SkillWrapper>
-          { this.props.skills.map(skill => (
-            <Skill key={skill.skill_id}>
-              <SkillName>{skill.name}</SkillName>
-              <SkillRatio ratio={skill.ratio}></SkillRatio>
-            </Skill>
-          ))}
-        </SkillWrapper>
-      </SkillHomeSection>
+      <VisibilitySensor onChange={ this.onChange } threshold={ 240 }>
+        <SkillHomeSection id="skills">
+          <SkillSectionTitle>Skills</SkillSectionTitle>
+          <SkillWrapper>
+            { this.props.skills.map((skill, i) => (
+              <Skill key={skill.skill_id}>
+                <SkillName>{skill.name}</SkillName>
+                <SkillRatio ratio={skill.ratio} visible={this.state.visible} delay={i*0.1}></SkillRatio>
+              </Skill>
+            ))}
+          </SkillWrapper>
+        </SkillHomeSection>
+      </VisibilitySensor>
     );
   }
 }

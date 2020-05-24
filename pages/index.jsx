@@ -64,18 +64,12 @@ const IntroSection = styled(HomeSection)`
     padding: 48px;
   }
 `
-const ParallaxImage = styled(Parallax)`
-  && {
-    position: fixed;
-    z-index: 0;
-    margin: 0;
-  }
-`
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
   }
+
   static async getInitialProps() {
     const projects = await getProjects();
     const skills = await getSkills();

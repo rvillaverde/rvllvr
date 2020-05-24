@@ -22,6 +22,8 @@ export function AppLayout({ children, home }) {
           content="Web developer with an eye on design."
         />
         <meta name="og:title" content={siteTitle} />
+        <meta property="og:url" content="https://www.romivillaverde.com" />
+        <meta property="og:image" content="/img/icon.png" />
       </Head>
         
       <AppHeader name={name} home={home}></AppHeader>

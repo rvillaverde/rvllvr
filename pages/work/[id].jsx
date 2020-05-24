@@ -43,8 +43,9 @@ class ProjectDetail extends React.Component {
             <ProjectWrapper>
               { this.props.projects.map(project => (
                 project.project_id != this.props.project.project_id && 
-                  <ProjectCard key={ project.project_id } project={project} />
+                  <StyledProjectCard key={ project.project_id } project={project} />
               ))}
+              <ProjectPadding />
             </ProjectWrapper>
           </WorkHomeSection>
         <ContactSection></ContactSection>
@@ -52,13 +53,33 @@ class ProjectDetail extends React.Component {
     )
   }
 }
+const ProjectPadding = styled.div`
+@media (min-width: 461px) {
+  display: none;
+}
+@media (max-width: 460px) {
+  min-width: 24px;
+}
+`
+const StyledProjectCard = styled(ProjectCard)`
+&& {
+  @media (max-width: 460px) {
+    min-width: calc(100vw-48px);
+    flex-shrink: 0;
+
+    &:last-child {
+      margin-right: 24px;
+    }
+  }
+}
+`
 
 const WorkHomeSection = styled(HomeSection)`
   padding: 96px 0;
 
   @media (max-width: 460px) {
     min-height: unset;
-    padding: 48px 0;
+    padding: 24px 0;
   }
 `
 const WorkSectionTitle = styled(HomeTitle)`
@@ -68,6 +89,11 @@ const WorkSectionTitle = styled(HomeTitle)`
   color: var(--color-tertiary__200);
   font-size: 240px;
   margin: -24px -12px;
+
+  @media (max-width: 460px) {
+    top: 0;
+    font-size: 76px;
+  }
 `
 const ProjectWrapper = styled(ViewportContainer)`
 && {
@@ -75,6 +101,12 @@ const ProjectWrapper = styled(ViewportContainer)`
   
   > a:not(:first-child) {
     margin-left: 24px;
+  }
+
+  @media (max-width: 460px) {
+    max-width: unset;
+    overflow-x: auto;
+    padding: 24px;
   }
 }
 `
