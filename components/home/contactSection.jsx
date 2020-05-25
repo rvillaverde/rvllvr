@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { sendContactEmail } from '../../utils/emails'
 
-import ViewportContainer from '../../components/viewportContainer'
 import FormRow from '../forms/formRow'
 import TextField from '../forms/textField'
 import Textarea from '../forms/textareaField'
