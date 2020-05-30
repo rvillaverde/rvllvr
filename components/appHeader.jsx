@@ -2,14 +2,17 @@ import React from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import styled from "styled-components"
+import MenuToggle from './menuToggle';
 
 const headerHeight = 80;
 
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { menuOpen: false }
     this.smoothScroll = this.smoothScroll.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
+    this.handleMenuToggle = this.handleMenuToggle.bind(this)
   }
 
   componentDidMount() {
@@ -23,6 +26,7 @@ class AppHeader extends React.Component {
   }
 
   smoothScroll(e) {
+    this.setState({ menuOpen: false })
     let sectionId = e.target.getAttribute('data-section')
     if (this.props.home) {
       let position = sectionId ? document.getElementById(sectionId).offsetTop - headerHeight : 0
@@ -55,10 +59,15 @@ class AppHeader extends React.Component {
     if (active) active.classList.add('active')
   }
 
+  handleMenuToggle() {
+    this.setState({ menuOpen: !this.state.menuOpen })
+  }
+
   render() {
     return (
       <Header>
         <HeaderNav>
+          <MenuToggle onChange={ this.handleMenuToggle } open={ this.state.menuOpen } />
           <HeaderSection>
             <Link href="/">
               <HeaderLink href="/">
@@ -66,7 +75,7 @@ class AppHeader extends React.Component {
               </HeaderLink>
             </Link>
           </HeaderSection>
-          <HeaderSection>
+          <HeaderSection show={ this.state.menuOpen }>
             <HeaderLink data-section="home" onClick={ this.smoothScroll }>Home</HeaderLink>
             <HeaderLink data-section="about" onClick={ this.smoothScroll }>About</HeaderLink>
             <HeaderLink data-section="work" onClick={ this.smoothScroll }>Work</HeaderLink>
@@ -90,7 +99,7 @@ const Header = styled.header`
   
   &:before {
     content: "";
-    background-color: var(--gray__100);
+    background-color: white;
     position: absolute;
     top: 0;
     left: 0;
@@ -120,8 +129,22 @@ const HeaderSection = styled.div`
   position: relative;
 
   &:last-child {
+    transition: all .3s ease-in-out;
     margin-left: auto;
     justify-content: flex-end;
+
+    @media (max-width: 640px) {
+      position: fixed;
+      flex-direction: column;
+      transform: scaleY(${ props => props.show ? 1 : 0 });
+      transform-origin: top;
+      margin-top: var(--header-height);
+      z-index: 240;
+      width: 100%;
+      background-color: rgba(255,255,255,0.9);
+      justify-content: center;
+      overflow: hidden;
+    }
   }
 `
 const HeaderLink = styled.a`
