@@ -73,7 +73,6 @@ const StyledProjectCard = styled(ProjectCard)`
   }
 }
 `
-
 const WorkHomeSection = styled(HomeSection)`
   padding: 96px 0;
 

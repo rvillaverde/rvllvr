@@ -16,7 +16,7 @@ const Toggle = styled.a`
   }
 `
 const MenuLine = styled.span`
-  background: var(--gray__300);
+  background: var(--color-primary);
   border-radius: 3px;
   display: flex;
   height: 2px;

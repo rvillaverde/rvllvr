@@ -42,7 +42,6 @@ const Container = styled.div`
 
 export default function FileUploader(props) {
   const handleDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles)
     if (acceptedFiles.length) props.onChange(acceptedFiles)
   }, [])
 

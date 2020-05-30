@@ -4,7 +4,6 @@ const ImageService = require('./imageService');
 class ProjectImageService {
   static async createProjectImages(project, images) {
     if (!Array.isArray(images)) images = [images]
-    console.log(images)
     let savedImages = [];
     for (let i=0; i<images.length; i++) {
       let image = images[i]
@@ -15,7 +14,6 @@ class ProjectImageService {
         image_url: uploadedImage.url,
         image_cdn_id: uploadedImage.id
       }
-      console.log(uploadedImage)
       savedImages.push(savedImage);
     }
     return await ProjectImageDAO.bulkCreate(savedImages, { returning: true });

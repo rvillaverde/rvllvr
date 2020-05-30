@@ -89,11 +89,11 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state.images)
     this.setState({ loading: true })
     let formData = new FormData(e.target)
-    formData.append('cover', this.state.cover)
-    formData.append('images', this.state.images)
+    this.state.images.forEach(image => {
+      formData.append('images', image.file)
+    })
     if (this.props.project) formData.append('project_id', this.props.project.project_id)
     this.props.onSubmit(formData)
   }
@@ -106,12 +106,15 @@ class ProjectForm extends React.Component {
   }
 
   handleImagesAdd(files) {
+    let images = this.state.images
     files.forEach((file, i) => { 
-      file.image_id = `image-${new Date().valueOf()}-${ i }`;
-      file.image_url = URL.createObjectURL(file);
-      file.new = true;
+      images.push({
+        file: file,
+        image_id: `image-${new Date().valueOf()}-${ i }`,
+        image_url: URL.createObjectURL(file),
+        new: true,
+      })
     })
-    let images = this.state.images.concat(files)
     this.setState({ images })
   }
 
@@ -161,7 +164,7 @@ class ProjectForm extends React.Component {
               <TextField placeholder="Type" type="text" name="type" value={this.props.project ? this.props.project.type : ''} />
             </FormRow>
             <FormRow>
-              <FileUploader onChange={ this.handleCoverChange } name="cover">
+              <FileUploader onChange={ this.handleCoverChange }>
                 <p className='typography-body'>
                   Drag 'n' drop the project cover here, or click to select a file.
                 </p>
@@ -170,7 +173,7 @@ class ProjectForm extends React.Component {
           </FormSubsection>
         </FormSection>
         <FormSection>
-          <FileUploader onChange={ this.handleImagesAdd } name="images" multiple>
+          <FileUploader onChange={ this.handleImagesAdd }>
             <ImagesPreview>
               { this.state.images.map(image => (
                 <ImagePreviewWithActions key={ image.image_id } image={ image.image_url } >

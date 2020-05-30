@@ -28,7 +28,6 @@ export async function getProjects() {
 }
 
 export async function editProject(data) {
-  console.log(data.get('images'))
   const res = await fetch(`${ apiUrl }/edit`, {
     method: 'POST',
     body: data
@@ -46,7 +45,6 @@ export async function deleteImage(id) {
 }
 
 export async function deleteProject(id) {
-  console.log(id)
   const res = await fetch(`${ apiUrl }/delete`, {
     method: 'POST',
     body: JSON.stringify({id}),
