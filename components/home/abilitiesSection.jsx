@@ -15,17 +15,6 @@ const AbilitiesHomeSection = styled(HomeSection)`
     background: rgb(104,26,59);
     background: linear-gradient(-30deg, rgba(104,26,59,1) 0%, rgba(123,36,76,1) 100%);
   }
-  
-  &::after {
-    background-image: url('img/abilities_background.png');
-    background-position: center;
-    background-size: cover;
-    background-repat: no-repeat;
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
 }
 `
 const AbilityWrapper = styled.div`
