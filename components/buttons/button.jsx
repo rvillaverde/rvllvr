@@ -10,6 +10,7 @@ import styled from "styled-components"
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
   
   i:first-child:not(:last-child) {
     margin-right: 8px;

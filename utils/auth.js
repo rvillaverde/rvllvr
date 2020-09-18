@@ -41,7 +41,9 @@ export async function handleAuthSSR(ctx) {
   try {
     const res = await fetch(baseUrl + '/auth/validate', {
       method: 'POST',
-      headers: { 'Authorization': token }
+      headers: {
+        Authorization: `Bearer ${ token }`
+      }
     });
 
     if (res.status != 200) {

@@ -1,33 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const jwtSecret = process.env.JWT_SECRET;
-const jwtSaltRounds = 10;
 const UserService = require('../services/userService');
+const bcryptHelper = require('../helpers/bcryptHelper');
+const authHelper = require('../helpers/authHelper');
 
-router.use('/validate', (req, res, next) => {
-  const token = req.headers.authorization
-  jwt.verify(token, jwtSecret, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ "msg": err.message })
-    }
+router.use('/validate', async (req, res, next) => {
+  const { authorization } = req.headers
+  const { decoded } = await authHelper.validate(authorization)
+
+  if (decoded) {
     next()
-  });
+  } else {
+    return res.status(401).json({ msg: 'Unauthorized' })
+  }
 });
 
 router.post('/login', async (req, res) => {
-  const user = await UserService.findByField({ username: req.body.username });
+  const { username, password } = req.body
+  const user = await UserService.findByField({ username });
 
   if (user) {
-    bcrypt.compare(req.body.password, user.password, function(err, result) {
-      if (result == true) {
-        const token = jwt.sign({ "username": req.body.username }, jwtSecret, { expiresIn: 60 * 60 * 24 * 7 })
-        res.status(200).send({ token: token })
-      } else {
-        res.sendStatus(403)
-      }
-    });
+    const isValid = await bcryptHelper.compare(password, user.password)
+    if (isValid) {
+      const token = authHelper.getToken(username)
+      res.status(200).send({ token, user })
+    } else {
+      res.sendStatus(403)
+    }
   } else {
     res.sendStatus(403)
   }

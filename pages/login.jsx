@@ -32,9 +32,9 @@ const Legend = styled.p`
 const cookies = new Cookies();
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { invalid: false };
+  state = { invalid: false };
+  
+  componentDidMount() {
     cookies.set('token', undefined);
   }
 
@@ -48,11 +48,9 @@ class Login extends React.Component {
     });
 
     if (res.status === 200) {
-      const token = (await res.json()).token;
+      const { token } = await res.json();
       cookies.set('token', token);
-      this.setState({
-        token: token
-      })
+      this.setState({ token })
       Router.push('/admin')
     } else {
       console.log('usuario o contraseña incorrectos')

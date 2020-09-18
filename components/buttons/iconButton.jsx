@@ -4,13 +4,15 @@ import styled from "styled-components"
 import Button from "./button"
 
 class IconButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
+    const {
+      className,
+      type,
+      onClick
+    } = this.props
+
     return (
-      <MyButton className={ this.props.className } type={ this.props.type } onClick={ this.props.onClick }>
+      <MyButton className={ className } type={ type } onClick={ onClick }>
         { this.props.children }
       </MyButton>
     );

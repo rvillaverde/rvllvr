@@ -47,8 +47,7 @@ const IntroViewportContainer = styled(ViewportContainer)`
 `
 const IntroSection = styled(HomeSection)`
   margin-top: calc(var(--header-height) * -1);
-  min-height: 680px;
-  padding: 64px 80px;
+  min-height: 560px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -64,12 +63,20 @@ const IntroSection = styled(HomeSection)`
     padding: 48px;
   }
 `
+const ParallaxWrapper = styled(Parallax)`
+&& {
+  padding: 80px 68px;
+  height: 560px;
+  justify-content: flex-end;
+
+  @media (max-width: 767px) {
+    padding: 0;
+    height: 100%;
+  }
+}
+`
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   static async getInitialProps() {
     const projects = await getProjects();
     const skills = await getSkills();
@@ -80,12 +87,12 @@ class Home extends React.Component {
     return (
       <Layout home>
         <IntroSection id="home">
-          <Parallax image="/img/home_background.jpg">
-          </Parallax>
-          <IntroViewportContainer>
-            <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
-            <h4 className="typography-headline4">web designer <br/>& developer.</h4>
-          </IntroViewportContainer>
+          <ParallaxWrapper id="home-image" image="/img/home_background.jpg">
+            <IntroViewportContainer>
+              <h2 className="typography-headline2">Hi there, <br/>I'm Romina</h2>
+              <h4 className="typography-headline4">web designer <br/>& developer.</h4>
+            </IntroViewportContainer>
+          </ParallaxWrapper>
         </IntroSection>
         <AboutSection></AboutSection>
         <AbilitiesSection></AbilitiesSection>

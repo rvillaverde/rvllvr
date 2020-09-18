@@ -1,30 +1,29 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const SkillService = require('../services/skillService');
+const SkillService = require('../services/skillService')
 
 router.get('/', async(req, res) => {
-  let skills = await SkillService.getSkills();
-  res.status(200).send(skills);
+  const skills = await SkillService.getSkills()
+  res.status(200).send(skills)
 })
 
 router.post('/', async(req, res) => {
-  let skill = req.body;
-  let savedSkill = await SkillService.createSkill(skill);
-  res.status(200).send(savedSkill);
+  const skill = req.body
+  const savedSkill = await SkillService.createSkill(skill)
+  res.status(200).send(savedSkill)
 })
 
-router.post('/:id/edit', async(req, res) => {
-  let id = req.params.id;
-  let fields = req.body;
-  let updated = await SkillService.updateSkill(id, fields);
-  res.status(200).send({ updated });
+router.put('/:id', async(req, res) => {
+  const { params: { id }, body: { fields } } = req
+  const updated = await SkillService.updateSkill(id, fields)
+  res.status(200).send({ updated })
 })
 
-router.post('/delete', async(req, res) => {
-  let skill_id = req.body.id;
-  let deleted = await SkillService.deleteSkill(skill_id);
-  res.status(200).send({ deleted });
+router.delete('/', async(req, res) => {
+  const { id } = req.body
+  const deleted = await SkillService.deleteSkill(id)
+  res.status(200).send({ deleted })
 })
 
-module.exports = router;
+module.exports = router

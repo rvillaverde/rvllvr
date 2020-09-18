@@ -1,7 +1,6 @@
 import fetch from 'node-fetch'
 
-const apiUrl = 'https://rvllvr.herokuapp.com/email';
-// const apiUrl = 'http://localhost:3000/email';
+const apiUrl = `${ process.env.API_ENDPOINT }/email`
 
 export async function sendContactEmail(contact) {
   const res = await fetch(`${ apiUrl }/contact`, {

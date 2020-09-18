@@ -104,18 +104,25 @@ const ProjectInfo = styled.div`
 `
 
 class ProjectCard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
+    const { project, className } = this.props
+
     return (
-      <Link key={ this.props.project.project_id } href="/work/[id]" as={`/work/${ this.props.project.internal_url }`}>
-        <Card className={ this.props.className} id={`project-${ this.props.project.project_id }`} cover={ this.props.project.cover_url } href={`/work/${ this.props.project.internal_url }`}>
+      <Link
+        key={ project.project_id }
+        href="/work/[id]"
+        as={`/work/${ project.internal_url }`}
+      >
+        <Card
+          className={ className}
+          id={`project-${ project.project_id }`}
+          cover={ project.cover_url }
+          href={`/work/${ project.internal_url }`}
+        >
           <ProjectInfo>
-            <h3 className="typography-headline3">{ this.props.project.name }</h3>
+            <h3 className="typography-headline3">{ project.name }</h3>
             <hr/>
-            <p className="typography-body">{ this.props.project.technologies }</p>
+            <p className="typography-body">{ project.technologies }</p>
           </ProjectInfo>
         </Card>
       </Link>

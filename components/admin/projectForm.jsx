@@ -78,35 +78,49 @@ const Form = styled.form`
 `
 
 class ProjectForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = defaultState(this.props.project)
-    this.handleCoverChange = this.handleCoverChange.bind(this)
-    this.handleImageDelete = this.handleImageDelete.bind(this)
-    this.handleImagesAdd = this.handleImagesAdd.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  state = {
+    coverPreview: this.props.project ? this.props.project.cover_url : "/img/placeholder.svg",
+    images: this.props.project && this.props.project.images ? this.props.project.images : [],
+    imagesPreview: [],
+    loading: false,
+    project: this.props.project
   }
 
-  handleSubmit(e) {
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = defaultState(this.props.project)
+  //   this.handleCoverChange = this.handleCoverChange.bind(this)
+  //   this.handleImageDelete = this.handleImageDelete.bind(this)
+  //   this.handleImagesAdd = this.handleImagesAdd.bind(this)
+  //   this.handleSubmit = this.handleSubmit.bind(this)
+  // }
+
+  handleSubmit = (e) => {
     e.preventDefault()
     this.setState({ loading: true })
-    let formData = new FormData(e.target)
-    this.state.images.forEach(image => {
+
+    const { project, onSubmit } = this.props
+    const { images, cover } = this.state
+
+    const formData = new FormData(e.target)
+    cover && formData.append('cover', cover)
+    images.length && images.forEach(image => {
       formData.append('images', image.file)
     })
-    if (this.props.project) formData.append('project_id', this.props.project.project_id)
-    this.props.onSubmit(formData)
+
+    if (project) formData.append('project_id', project.project_id)
+    onSubmit(formData)
   }
 
-  handleCoverChange(files) {
+  handleCoverChange = (files) => {
     this.setState({
       cover: files[0],
       coverPreview: URL.createObjectURL(files[0])
     })
   }
 
-  handleImagesAdd(files) {
-    let images = this.state.images
+  handleImagesAdd = (files) => {
+    const { images } = this.state
     files.forEach((file, i) => { 
       images.push({
         file: file,
@@ -118,26 +132,28 @@ class ProjectForm extends React.Component {
     this.setState({ images })
   }
 
-  async handleImageDelete(id) {
+  handleImageDelete = (id) => {
     this.setState({ loading: true })
+    const { images } = this.state
     
-    let index = this.state.images.findIndex((image) => image.image_id === id )
-    let image = this.state.images[index]
+    const index = images.findIndex((image) => image.image_id === id )
+    const image = images[index]
     
     if (image.new) {
       this.deleteImage(index)
     } else {
-      let res = await deleteImage(id)
-      if (res.deleted === 1) {
-        this.deleteImage(index)
-      }
+      deleteImage(id).then(({ deleted }) => {
+        if (deleted === 1) {
+          this.deleteImage(index)
+        }
+      })
     }
   }
 
-  deleteImage(index) {
-    let images = this.state.images
+  deleteImage = (index) => {
+    const { images } = this.state
     images.splice(index, 1)
-    this.setState({ images: images, loading: false })
+    this.setState({ images, loading: false })
   }
 
   render() {

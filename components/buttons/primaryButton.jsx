@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Button from "./button"
   
-const MyButton = styled(Button)`
+const PrimaryButton = styled(Button)`
 && {
   min-width: 120px;
   padding: 4px 24px;
@@ -13,4 +13,4 @@ const MyButton = styled(Button)`
   text-decoration: none;
 }
 `
-export default MyButton;
+export default PrimaryButton

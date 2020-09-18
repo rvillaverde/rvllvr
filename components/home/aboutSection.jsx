@@ -1,5 +1,7 @@
+import Link from 'next/link'
 import React from 'react'
 import styled from "styled-components"
+import PrimaryButton from '../buttons/primaryButton'
 import ViewportContainer from '../viewportContainer'
 import { HomeSection, HomeTitle } from "./homeSection"
 
@@ -8,6 +10,7 @@ const AboutHomeSection = styled(HomeSection)`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 68px 0;
 
   &::before {
     background-color: var(--color-secondary__200);
@@ -17,21 +20,39 @@ const AboutHomeSection = styled(HomeSection)`
 `
 const AboutViewportContainer = styled(ViewportContainer)`
 && {
-  align-items: flex-start;
   color: var(--color-tertiary);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   max-width: 640px;
   position: relative;
-  
+
+  @media (max-width: 540px) {
+    padding: 0 24px !important;
+  }
+}
+`
+const AboutText = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
   @media (max-width: 540px) {
     flex-direction: column;
-    padding: 0 24px !important;
     align-items: center;
-  
+
     p {
       text-align: center;
     }
+  }
+`
+const ResumeButton = styled(PrimaryButton)`
+&& {
+  margin-top: 36px;
+  margin-left: auto;
+
+  @media (max-width: 540px) {
+    margin: auto;
+    margin-top: 36px;
   }
 }
 `
@@ -77,24 +98,26 @@ const AboutSectionTitle = styled(HomeTitle)`
 `
 
 class AboutSection extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
     return (
       <AboutHomeSection id="about">
       <AboutSectionTitle>About</AboutSectionTitle>
       <AboutViewportContainer>
-        <ProfilePic image="/img/profile.jpg"></ProfilePic>
-        <p className="typography-body">
-        Full stack developer with over 10 years experience working with different companies and technologies.
-        <br/>
-        Proactive and deeply analytical, as well as creative, curious and detail-oriented.
-        I have a great autodidact ability, as I’m always looking to learn new things to improve my work.
-        <br/><br/>
-        Currently working freelance for different clients, designing and developing websites and applications.
-        </p>
+        <AboutText>
+          <ProfilePic image="/img/profile.jpg"></ProfilePic>
+          <p className="typography-body">
+          Full stack developer with over 10 years experience working with different companies and technologies.
+          <br/>
+          Proactive and deeply analytical, as well as creative, curious and detail-oriented.
+          I have a great autodidact ability, as I’m always looking to learn new things to improve my work.
+          <br/><br/>
+          Currently working freelance for different clients, designing and developing websites and applications.
+          </p>
+        </AboutText>
+
+        <ResumeButton href='/resume' as='a' target='_blank'>
+          View my resume
+        </ResumeButton>
       </AboutViewportContainer>
     </AboutHomeSection>
     );

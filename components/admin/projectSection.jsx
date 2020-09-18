@@ -9,7 +9,7 @@ import { CrossIcon, EditIcon } from '../icons'
 import { Table, TBody, Tr, Td, TdActions } from '../tables/table'
 import Button from '../buttons/primaryButton'
 import LinkButton from '../buttons/primaryButton'
-import Link from 'next/link';
+import Link from 'next/link'
 
 const DeleteProjectModal = ({ open, handler, confirm }) => (
   <Modal open={ open } handler={ handler }>
@@ -30,24 +30,18 @@ const DeleteProjectModal = ({ open, handler, confirm }) => (
       </Button>
     </ModalActions>
   </Modal>
-);
+)
 
 class ProjectSection extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { deleteModalOpen: false }
-    this.deleteProject = this.deleteProject.bind(this);
-    this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
-  }
+  state = { deleteModalOpen: false }
 
-  toggleDeleteModal(project_id) {
-    this.setState({ deleteModalOpen: !this.state.deleteModalOpen, project_id: project_id })
+  toggleDeleteModal = (project_id) => {
+    this.setState({ deleteModalOpen: !this.state.deleteModalOpen, project_id })
     this.deleteProject(project_id)
   }
 
-  async deleteProject(id) {
-    await deleteProject(id);
-    Router.push(`/admin`)
+  deleteProject = (id) => {
+    deleteProject(id).then(() => Router.push(`/admin`))
   }
 
   render() {
@@ -58,17 +52,21 @@ class ProjectSection extends React.Component {
           confirm={ this.deleteProject }/>
         <TittleWrapper>
           <Title className="typography-headline4">Admin Projects</Title>
-            <Link href="/admin/projects/new">
-              <LinkButton href="/admin/projects/new">New Project</LinkButton>
-            </Link>
-          </TittleWrapper>
+          <Link href="/admin/projects/new">
+            <LinkButton href="/admin/projects/new">New Project</LinkButton>
+          </Link>
+        </TittleWrapper>
         <Table>
           <TBody>
-            { this.props.projects.map(project => (
-              <ProjectRow key={ project.project_id } id={`project-${ project.project_id }`}
-                project={project} handleDelete={ this.toggleDeleteModal }>
-              </ProjectRow>
-            ))}
+            {
+              this.props.projects.map(project => (
+                <ProjectRow
+                  key={ project.project_id }
+                  id={`project-${ project.project_id }`}
+                  project={project}
+                  handleDelete={ this.toggleDeleteModal } />
+              ))
+            }
           </TBody>
         </Table>
       </Section>
@@ -97,7 +95,7 @@ const ProjectRow = function(props) {
         </IconButton>
       </TdActions>
     </Tr>
-  );
+  )
 }
 
 const TittleWrapper = styled.div`
@@ -120,7 +118,7 @@ const Section = styled.section`
   }
 `
 const Title = styled.h4`
-  color: var(--gray__600)
+  color: var(--gray__600);
 `
 const ModalContent = styled.div`
   display: flex;
@@ -146,4 +144,4 @@ const ModalActions = styled.div`
     margin-left: 1rem;
   }
 `
-export default ProjectSection;
+export default ProjectSection

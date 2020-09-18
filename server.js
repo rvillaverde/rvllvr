@@ -1,11 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
-const next = require('next');
-const models = require('./src/models');
+require('dotenv').config()
+const express = require('express')
+const fileUpload = require('express-fileupload')
+const cors = require('cors')
+const next = require('next')
+const models = require('./src/models')
 
-const port =  process.env.PORT || 3000;
+const port =  process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -15,21 +15,24 @@ const skillRouter = require('./src/routes/skillRouter.js')
 const projectRouter = require('./src/routes/projectRouter.js')
 const projectImageRouter = require('./src/routes/projectImageRouter.js')
 const emailRouter = require('./src/routes/emailRouter.js')
+const resumeRouter = require('./src/routes/resumeRouter.js')
 
 app.prepare().then(() => {
   const server = express()
 
-  server.use(cors());
-  server.use(express.json());
+  server.use(express.static('public'))
+  server.use(cors())
+  server.use(express.json())
   server.use(fileUpload({
     createParentPath: true
-  }));
+  }))
 
-  server.use('/auth', authRouter);
-  server.use('/skills', skillRouter);
-  server.use('/projects', projectRouter);
-  server.use('/projects/image', projectImageRouter);
-  server.use('/email', emailRouter);
+  server.use('/auth', authRouter)
+  server.use('/skills', skillRouter)
+  server.use('/projects', projectRouter)
+  server.use('/projects/image', projectImageRouter)
+  server.use('/email', emailRouter)
+  server.use('/resume', resumeRouter)
 
   server.all('*', (req, res) => {
     return handle(req, res)
@@ -40,5 +43,5 @@ app.prepare().then(() => {
       if (err) throw err
       console.log(`> Ready on http://localhost:${port}`)
     })
-  });
-});
+  })
+})
