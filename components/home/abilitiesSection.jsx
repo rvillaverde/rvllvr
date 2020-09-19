@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { HomeSection } from "./homeSection"
 import VisibilitySensor from '../visibilitySensor'
 import { AbilityIcon_1, AbilityIcon_2, AbilityIcon_3 } from '../icons'
+import MouseParallax from '../mouseParallax'
 
 const AbilitiesHomeSection = styled(HomeSection)`
 && {
@@ -10,22 +11,12 @@ const AbilitiesHomeSection = styled(HomeSection)`
   justify-content: center;
   align-items: center;
   position: relative;
+  min-height: 600px;
   
   &::before {
     background: rgb(104,26,59);
     background: linear-gradient(-30deg, rgba(104,26,59,1) 0%, rgba(123,36,76,1) 100%);
   }
-
-  // &::after {
-  //   background-image: url('img/abilities_background.png');
-  //   background-position: center;
-  //   background-size: cover;
-  //   background-repat: no-repeat;
-  //   content: '';
-  //   position: absolute;
-  //   height: 100%;
-  //   width: 100%;
-  // }
 }
 `
 const AbilityWrapper = styled.div`
@@ -48,7 +39,7 @@ const Ability = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 120px;
+  max-width: 160px;
   opacity: ${ props => props.visible ? 1 : 0 };
   visibility: ${ props => props.visible ? 'visible' : 'hidden' };
   transition-delay: ${ props => props.delay && props.visible ? `${ props.delay }` : 0 }s;
@@ -73,12 +64,20 @@ const AbilityCaption = styled.p`
   letter-spacing: .8px;
 `
 class AbilitiesSection extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { visible: false }
-    this.onChange = this.onChange.bind(this)
+  state = { visible: false }
+
+  get images() {
+    return [
+      'abilities_parallax/abilities_01.svg',
+      'abilities_parallax/abilities_02.svg',
+      'abilities_parallax/abilities_03.svg',
+      'abilities_parallax/abilities_04.svg',
+      'abilities_parallax/abilities_05.svg',
+      'abilities_parallax/abilities_06.svg',
+    ]
   }
-  onChange(isVisible) {
+
+  onChange = (isVisible) => {
     if (!this.state.visible) {
       this.setState({ visible: isVisible })
     }
@@ -88,6 +87,7 @@ class AbilitiesSection extends React.Component {
     return (
       <VisibilitySensor onChange={ this.onChange } threshold={ 120 }>
         <AbilitiesHomeSection id="abilities">
+          <MouseParallax images={ this.images }/>
           <AbilityWrapper>
             <Ability visible={ this.state.visible }>
               <AbilityIcon>

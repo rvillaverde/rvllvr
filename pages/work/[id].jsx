@@ -29,15 +29,19 @@ class ProjectDetail extends React.Component {
         <Section>
           <TitleWrapper>
             <Title className="typography-headline3">{ this.props.project.name }</Title>
-            <PrimaryButton as="a" href={ this.props.project.url } target="_blank">
+            <VisitButton as="a" href={ this.props.project.url } target="_blank">
               <LinkIcon />
               <span>Visit { this.props.project.type }</span>
-            </PrimaryButton>
+            </VisitButton>
           </TitleWrapper>
           { this.props.project.images.map(image => (
             <ProjectImage key={ image.image_id } src={ image.image_url }></ProjectImage>
           ))}
         </Section>
+        <VisitButton as="a" href={ this.props.project.url } target="_blank">
+          <LinkIcon />
+          <span>Visit { this.props.project.type }</span>
+        </VisitButton>
         <WorkHomeSection id="work">
           <WorkSectionTitle>View more</WorkSectionTitle>
             <ProjectWrapper>
@@ -125,12 +129,37 @@ const Section = styled(ViewportContainer)`
     padding: 24px;
   }
 `
+const Title = styled.h3`
+  color: var(--color-primary);
+`
+const VisitButton = styled(PrimaryButton)`
+&& {
+  @media (max-width: 767px) {
+    margin: 36px 24px;
+    margin-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+`
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`
-const Title = styled.h3`
-  color: var(--color-primary)
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  ${VisitButton} {
+    display: flex;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
 `
 const ProjectImage = styled.img`
   width: 100%;

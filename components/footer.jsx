@@ -1,12 +1,14 @@
 import React from 'react';
-import Link from 'next/link'
 import styled from "styled-components";
 
 import { MailIcon, GitIcon, LinkedInIcon } from "./icons";
 
+const FOOTER_HEIGHT = 140
+
 class AppFooter extends React.Component {
   state = {
-    visible: false
+    visible: false,
+    hide: true
   }
 
   componentDidMount() {
@@ -17,8 +19,16 @@ class AppFooter extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll = (e) => {
-    if (window.innerHeight + window.scrollY >= document.body.clientHeight + 140) {
+  handleScroll = () => {
+    this.toggleFooter()
+    this.animateFooter()
+  }
+
+  animateFooter = () => {
+    const { innerHeight, scrollY } = window
+    const { clientHeight } = document.body
+
+    if (Math.round(innerHeight + scrollY) >= clientHeight + FOOTER_HEIGHT - 20) {
       console.log('end')
       this.setState({ visible: true })
     } else {
@@ -26,11 +36,22 @@ class AppFooter extends React.Component {
     }
   }
 
+  toggleFooter = () => {
+    const { innerHeight, scrollY } = window
+    const { clientHeight } = document.body
+
+    if (Math.round(innerHeight * 2 + scrollY) >= clientHeight) {
+      this.setState({ hide: false })
+    } else {
+      this.setState({ hide: true })
+    }
+  }
+
   render() {
-    const { visible } = this.state
+    const { visible, hide } = this.state
 
     return (
-      <Footer>
+      <Footer hide={hide}>
         <FooterInfo visible={visible}>
           <FooterLink
             delay='.2s'
@@ -74,6 +95,7 @@ const Footer = styled.footer`
   align-items: center;
   flex-direction: column;
   z-index: -4;
+  opacity: ${({ hide }) => hide ? 0 : 1};
 `
 const FooterLink = styled.a`
   margin: 0 12px;
@@ -84,11 +106,11 @@ const FooterLink = styled.a`
     transition: all .3s ease-in-out;
   }
 
-  &:hover {
-    path {
-      opacity: 1;
-    }
-  }
+  // &:hover {
+  //   path {
+  //     opacity: 1;
+  //   }
+  // }
 `
 const FooterInfo = styled.p`
   color: white;
@@ -104,8 +126,14 @@ const FooterInfo = styled.p`
   }
 
   &:hover {
-    path {
+    ${FooterLink} path {
       opacity: 0.4;
+    }
+  }
+
+  ${FooterLink}:hover {
+    path {
+      opacity: 1;
     }
   }
 `
