@@ -88,6 +88,6 @@ const Image = styled.div`
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: ${({ index }) => index};
-  transition: translate3d linear 0s;
+  transition: all ease-out 0.6s;
 `;
 export default MouseParallax;
