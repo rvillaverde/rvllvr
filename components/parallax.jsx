@@ -35,6 +35,7 @@ class Parallax extends React.Component {
 
   render() {
     const { id, image, height, children, as, className } = this.props
+
     return (
       <VizSensor
         partialVisibility
