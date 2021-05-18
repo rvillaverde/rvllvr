@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Field = styled.div`
   margin-top: auto;
@@ -7,10 +7,8 @@ const Field = styled.div`
   &:not(:first-child) {
     margin-left: 12px;
   }
-`
+`;
 
-function FormField({ className, children }) {
-  return <Field className={ className }>{ children }</Field>;
-}
-
-export default FormField;
+export default ({ className, children }) => {
+  return <Field className={className}>{children}</Field>;
+};

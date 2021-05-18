@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const Row = styled.div`
   display: flex;
@@ -8,11 +8,11 @@ const Row = styled.div`
   &:first-of-type {
     margin-top: 0;
   }
-  
+
   @media (min-width: 460px) {
     min-width: 320px;
   }
-`
+`;
 
 class FormRow extends React.Component {
   constructor(props) {
@@ -20,11 +20,7 @@ class FormRow extends React.Component {
   }
 
   render() {
-    return (
-      <Row>
-        { this.props.children }
-      </Row>
-    );
+    return <Row>{this.props.children}</Row>;
   }
 }
 

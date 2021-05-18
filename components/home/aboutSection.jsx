@@ -39,10 +39,6 @@ const AboutText = styled.div`
   @media (max-width: 540px) {
     flex-direction: column;
     align-items: center;
-
-    p {
-      text-align: center;
-    }
   }
 `;
 const ResumeButton = styled(PrimaryButton)`
