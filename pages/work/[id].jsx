@@ -56,12 +56,9 @@ class ProjectDetail extends React.Component {
           <WorkSectionTitle>View more</WorkSectionTitle>
           <ProjectWrapper>
             {projects.map(
-              (project) =>
-                project.project_id != project.project_id && (
-                  <StyledProjectCard
-                    key={project.project_id}
-                    project={project}
-                  />
+              (p) =>
+                p.project_id != project.project_id && (
+                  <StyledProjectCard key={p.project_id} project={p} />
                 )
             )}
             <ProjectPadding />
