@@ -1,0 +1,71 @@
+.header
+  display: flex
+  height: var(--header-height)
+  left: 0
+  overflow: hidden
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 24
+
+  &:before
+    background-color: white
+    bottom: 0
+    content: ""
+    left: 0
+    opacity: 0.9
+    position: absolute
+    right: 0
+    top: 0
+    width: 100%
+
+  .nav
+    display: flex
+    margin: 0 auto
+    position: relative
+    width: 100%
+
+    @media (max-width: 460px)
+      overflow-x: auto
+      overflow-y: hidden
+
+    .section
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      position: relative
+
+      &:last-child
+        transition: all .3s ease-in-out
+        margin-left: auto
+        justify-content: flex-end
+
+        @media (max-width: 640px)
+          background-color: rgba(255,255,255,0.9)
+          flex-direction: column
+          justify-content: center
+          margin-top: var(--header-height)
+          overflow: hidden
+          position: fixed
+          transform-origin: top
+          transform: scaleY(0)
+          width: 100%
+          z-index: 240
+
+          &.menu-open
+            transform: scaleY(1)
+
+      .link
+        transition: all .3s ease-in-out
+        color: var(--color-tertiary)
+        cursor: pointer
+        padding: 12px 24px
+        text-decoration: none
+        font-weight: 500
+        user-select: none
+
+        &:hover
+          color: var(--color-primary)
+
+        &.active
+          color: var(--color-secondary)

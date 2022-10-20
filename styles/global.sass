@@ -1,0 +1,174 @@
+@import "./forms"
+
+:root
+  --viewport-width: 1280px
+  --header-height: 80px
+  --footer-height: 140px
+
+  --gray__100: #fefdff
+  --gray__200: #e9e5e8
+  --gray__300: #bcb7ba
+  --gray__400: #8f898d
+  --gray__500: #625a5f
+  --gray__600: #1e151a
+
+  --color-primary: #993366
+  --color-secondary: #339999
+  --color-tertiary: #311847
+
+  --color-primary__100: #f5ccf0
+  --color-primary__200: #e0aad1
+  --color-primary__300: #c277a3
+  --color-primary__400: #ad5585
+  --color-primary__500: #993366
+  --color-primary__600: #7b244c
+  --color-primary__700: #681a3b
+  --color-primary__800: #4a0a21
+
+  --color-secondary__100: #a5f5f5
+  --color-secondary__200: #8ce0e0
+  --color-secondary__300: #66c2c2
+  --color-secondary__400: #4cadad
+  --color-secondary__500: #339999
+  --color-secondary__600: #247170
+  --color-secondary__700: #1a5755
+  --color-secondary__800: #0f3c3a
+
+  --color-tertiary__100: #eadced
+  --color-tertiary__200: #c1b1c8
+  --color-tertiary__300: #ad9bb5
+  --color-tertiary__400: #836f91
+  --color-tertiary__500: #6f597e
+  --color-tertiary__600: #311847
+  --color-tertiary__700: #2a113d
+  --color-tertiary__800: #200731
+
+  --color-complementary__01: #eec584
+  --color-complementary__02: #e26d5a
+  --color-complementary__03: #5c374c
+  --color-complementary__04: #c8e1a7
+
+  --typography--primary: 'Quicksand'
+
+*
+  box-sizing: border-box
+  -webkit-tap-highlight-color: transparent
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+
+*::selection
+  background-color: var(--color-secondary)
+  color: white
+
+body
+  font-family: var(--typography--primary)
+  margin: 0
+  margin-bottom: var(--footer-height)
+  padding-top: var(--header-height)
+  min-height: calc(100vh - var(--footer-height))
+  box-sizing: border-box
+  box-shadow: 0px 2px 8px rgba(0,0,0,.2)
+  background-color: white
+
+.layout
+  background-color: white
+
+.typography-headline1
+  font-family: var(--typography--primary)
+  font-size: 54px
+  font-weight: 400
+  line-height: 64px
+  margin: 0
+
+.typography-headline2
+  font-family: var(--typography--primary)
+  font-size: 40px
+  font-weight: 300
+  line-height: 48px
+  margin: 0
+
+.typography-headline3
+  font-family: "Gotham Narrow Book"
+  font-size: 24px
+  font-weight: 400
+  line-height: 32px
+  text-transform: uppercase
+  letter-spacing: 4px
+  margin: 0
+
+.typography-headline4
+  font-family: var(--typography--primary)
+  font-size: 24px
+  font-weight: 300
+  line-height: 28px
+  margin: 0
+
+.typography-subtitle
+  font-family: var(--typography--primary)
+  font-size: 18px
+  font-weight: 400
+  line-height: 24px
+
+.typography-body
+  font-family: var(--typography--primary)
+  font-size: 14px
+  font-weight: 400
+  line-height: 24px
+  margin: 0
+
+.caption
+  font-size: 12px
+  line-height: 16px
+  font-weight: 400
+
+.button
+  align-items: center
+  background-color: var(--color-secondary)
+  border: 1px solid var(--color-secondary)
+  cursor: pointer
+  display: flex
+  font-size: 12px
+  justify-content: center
+  min-height: 36px
+  outline: none
+  transition: all .3s ease-in-out
+
+  &.primary
+    color: var(--gray__100)
+    letter-spacing: 1px
+    min-width: 120px
+    padding: 4px 24px
+    text-decoration: none
+    text-transform: uppercase
+
+  &.icon
+    height: 36px
+    min-width: unset
+    padding: 0
+    width: 36px
+
+  i:first-child:not(:last-child)
+    margin-right: 8px
+
+  span
+    text-align: center
+
+  &:hover:not(:disabled)
+    background-color: var(--color-primary)
+    border-color: var(--color-primary)
+
+  &:active
+    transform: scale(0.96)
+
+  &:disabled
+    cursor: default
+    opacity: 0.5
+    pointer-events: none
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance: textfield

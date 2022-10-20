@@ -1,0 +1,70 @@
+.form-section
+  display: flex
+
+  @media (max-width: 768px)
+    flex-direction: column
+
+.form-subsection
+  flex-grow: 1
+
+  @media (min-width: 768px)
+    &:not(:first-child)
+      margin-left: 24px
+
+  @media (max-width: 767px)
+    &:not(:first-child)
+      margin-top: 24px
+
+.form-row
+  display: flex
+  margin: 12px 0
+
+  &:first-of-type
+    margin-top: 0
+
+  @media (min-width: 460px)
+    min-width: 320px
+
+.form-field
+  flex: 1
+  margin-top: auto
+
+  &:not(:first-child)
+    margin-left: 12px
+
+  .number-field
+    flex-grow: 0
+    flex-shrink: 0
+    min-width: 60px
+
+.form-label
+  color: var(--color-secondary__200)
+  display: block
+
+.form-input
+  background-color: white
+  border: 1px solid var(--gray__200)
+  color: var(--gray__600)
+  font-family: var(--typography-primary)
+  height: 36px
+  min-width: 60px
+  outline: none
+  padding: 8px
+  width: 100%
+
+  @media (min-width: 460px)
+    min-width: 280px
+
+.form-textarea
+  background-color: white
+  border: 0px
+  border: 1px solid var(--gray__200)
+  color: var(--gray__600)
+  font-family: var(--typography-primary)
+  outline: none
+  padding: 8px
+  resize: none
+  width: 100%
+
+  @media (min-width: 460px)
+    min-width: 280px

@@ -1,0 +1,354 @@
+.section
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  width: 100%
+  min-height: 400px
+  background-color: white
+  position: relative
+  overflow: hidden
+
+  @media (max-width: 460px)
+    padding: 96px 0
+    min-height: 100vh
+
+  &::before
+    content: ""
+    position: absolute
+    right: 0px
+    left: 0px
+    bottom: 0px
+    top: 0px
+
+.title
+  font-family: 'Gotham Narrow Black'
+  font-size: 320px
+  margin: -8px
+  line-height: 220px
+  position: absolute
+  user-select: none
+
+  @media (max-width: 460px)
+    font-size: 100px
+    line-height: 84px
+    margin: -8px -4px
+
+.section.intro
+  align-items: flex-end
+  display: flex
+  justify-content: flex-end
+  margin-top: calc(var(--header-height) * -1)
+  min-height: 560px
+
+  &::before
+    background: rgb(49, 24, 71)
+    background: linear-gradient(-30deg, rgba(49, 24, 71, 1) 0%, rgba(123, 36, 76, 1) 76%, rgba(104, 26, 59, 0.6) 100%)
+    opacity: 0.8
+    z-index: 2
+
+  @media (max-width: 540px)
+    padding: 48px
+
+  .parallax
+    height: 560px
+    justify-content: flex-end
+    padding: 80px 68px
+
+    @media (max-width: 767px)
+      height: 100%
+      padding: 0
+
+  .viewport-container
+    align-items: flex-end
+    color: var(--gray__100)
+    display: flex
+    justify-content: flex-end
+    width: 100%
+    padding: 0
+    z-index: 4
+
+    h2,
+    h4
+      position: relative
+
+    h2
+      text-align: right
+      margin-bottom: 8px
+
+    h4
+      margin-bottom: 12px
+      padding-left: 36px
+
+    @media (max-width: 540px)
+      flex-direction: column
+      padding: 0
+
+      h4
+        text-align: right
+
+.section.about
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 68px 0
+
+  &::before
+    background-color: var(--color-secondary__200)
+    opacity: 0.48
+
+  .title
+    opacity: 0.28
+    left: 0
+    bottom: 0
+    color: var(--gray__100)
+
+  .viewport-container
+    color: var(--color-tertiary)
+    display: flex
+    flex-direction: column
+    max-width: 640px
+    position: relative
+
+    @media (max-width: 540px)
+      padding: 0 24px !important
+
+  .profile-pic
+    width: 180px
+    min-width: 180px
+    flex-srink: 1
+    background-color: var(--gray__100)
+    border-radius: 50%
+    margin-right: 64px
+    position: relative
+    overflow: hidden
+    background-image: url("/img/profile-2.jpg")
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+
+    @media (max-width: 540px)
+      margin-right: 0
+      margin-bottom: 48px
+
+    &::before
+      content: ""
+      display: block
+      padding-top: 100%
+
+    img
+      position: absolute
+      top: 0
+      width: auto
+      height: 100%
+
+  .text
+    display: flex
+    align-items: flex-start
+    justify-content: center
+
+    @media (max-width: 540px)
+      flex-direction: column
+      align-items: center
+
+  .resume-button
+    margin-top: 36px
+    margin-left: auto
+
+    @media (max-width: 540px)
+      margin: auto
+      margin-top: 36px
+
+.section.abilities
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  min-height: 600px
+
+  &::before
+    background: rgb(104, 26, 59)
+    background: linear-gradient(-30deg, rgba(104, 26, 59, 1) 0%, rgba(123, 36, 76, 1) 100%)
+
+  .wrapper
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    max-width: 960px
+    grid-gap: 100px
+
+    @media (max-width: 640px)
+      grid-gap: 48px
+
+    @media (max-width: 460px)
+      grid-template-columns: 1fr
+
+  .ability
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+    max-width: 160px
+    transition: all .6s ease-in-out
+
+  .icon
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 68px
+    height: 68px
+
+    svg
+      width: 100%
+      height: auto
+
+  .caption
+    color: var(--gray__100)
+    margin-top: 20px
+    text-align: center
+    letter-spacing: 0.8px
+
+.section.skills
+  align-items: center
+  display: flex
+  justify-content: center
+  min-height: 444px
+
+  &::before
+    background-color: var(--color-complementary__04)
+    opacity: 40%
+
+  .title
+    bottom: 0
+    color: var(--color-complementary__04)
+    left: 0
+    opacity: .24
+
+  .wrapper
+    display: grid
+    grid-column-gap: 64px
+    grid-row-gap: 20px
+    grid-template-columns: 1fr 1fr
+    max-width: 840px
+    position: relative
+    width: 100%
+
+    @media (max-width: 840px)
+      grid-template-columns: 1fr
+      max-width: 460px
+      padding: 0 24px
+
+  .skill
+    display: flex
+
+    .name
+      color: var(--color-tertiary)
+      font-weight: 500
+      margin: 0
+
+    .rate
+      position: relative
+      height: 12px
+      background-color: var(--gray__100)
+      max-width: 240px
+      width: 100%
+      margin: auto 0
+      margin-left: auto
+
+      .bar
+        transition: all .6s ease-in
+        background-color: var(--color-primary)
+        content: ""
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+
+      @media (max-width: 460px)
+        max-width: 200px
+
+.section.work
+  min-height: 600px
+
+  .title
+    color: var(--color-tertiary__200)
+    opacity: .12
+    right: 0
+    top: 0
+
+  .grid
+    display: grid
+    grid-gap: 48px
+    grid-template-columns: repeat(3, 1fr)
+    margin: auto
+    max-width: 1024px
+    padding: 96px 48px
+    width: 100%
+
+    @media (max-width: 768px)
+      grid-gap: 24px
+      grid-template-columns: repeat(2, 1fr)
+      padding: 0 24px
+
+    @media (max-width: 540px)
+      grid-template-columns: 1fr
+
+.section.contact
+  background-color: var(--color-tertiary)
+
+  input,
+  textarea
+    border-color: white
+
+  @media (max-width: 767px)
+    padding: 36px 24px
+
+  .inner
+    margin: 0 auto
+    max-width: 760px
+    width: 100%
+    min-height: 520px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 64px 0
+
+    @media (max-width: 767px)
+      flex-direction: column
+
+  .title
+    opacity: 0.08
+    right: 0
+    bottom: 0
+    color: var(--color-tertiary__100)
+
+  .subsection
+    position: relative
+    color: white
+
+    @media (max-width: 767px)
+      text-align: left
+      width: 100%
+
+      &:nth-of-type(1)
+        padding-bottom: 64px
+        text-align: center
+
+        br:nth-of-type(1)
+          display: none
+
+    @media (min-width: 768px)
+      &:nth-of-type(1)
+        padding-right: 64px
+        text-align: right
+
+      &:last-child
+        padding-left: 64px
+        border-left: 1px solid var(--color-secondary__200)
+        flex-grow: 1
+
+    .alert
+      color: white
+      margin-bottom: 12px
+
+      a
+        color: var(--color-secondary__200)
+        text-decoration: none
