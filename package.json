@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "nodemon server.ts",
-    "build": "next build",
-    "start": "node server.ts",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "next build",
+    "build": "npm run build:next && npm run build:server",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "airtable": "^0.11.5",

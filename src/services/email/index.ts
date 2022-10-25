@@ -15,8 +15,6 @@ mailer.fromTitle = FROM_TITLE;
 mailer.init();
 const template = mailer.getTemplate(CONTACT_TEMPLATE);
 
-console.log('*** mailgun template', template);
-
 const sendEmail = async (emailData: EmailData) => {
   const { body, subject, to, variables } = emailData;
 
@@ -56,7 +54,7 @@ const emailService = {
 
     console.log('email data', emailData);
 
-    // await sendEmail(emailData);
+    await sendEmail(emailData);
   },
 };
 

@@ -41,7 +41,7 @@ const Home: NextPage = () => {
     if (!projects && !skills && !loading) {
       fetchData();
     }
-  }, []);
+  }, [projects, skills, loading]);
 
   return (
     <Layout home>

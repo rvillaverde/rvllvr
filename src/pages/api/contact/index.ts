@@ -7,16 +7,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { body } = req;
 
     if (body.contact) {
-      const contact = JSON.parse(body.contact) as Contact;
-      console.log('handler body', body);
-      console.log('handler contact', contact);
+      const contact = body.contact as Contact;
 
       emailService.contact(contact);
 
-      res.status(200).json('');
+      res.send(200);
     } else {
-      console.log('no contact in body', body);
-      res.status(400).send('');
+      res.status(400).send({ error: 'UNDEFINED_CONTACT' });
     }
   }
 };

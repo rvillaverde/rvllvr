@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React from 'react';
-import VizSensor from 'react-visibility-sensor';
 import VisibilitySensor from '../visibility-sensor';
 
 import styles from './parallax.module.sass';
@@ -44,7 +43,6 @@ class Parallax extends React.Component<PropTypes, StateTypes> {
 
   handleScroll = () => {
     const { enabled, visible } = this.state;
-    // const { id } = this.props;
 
     if (visible && enabled) {
       const position = this.ref?.current?.getBoundingClientRect();
@@ -52,9 +50,6 @@ class Parallax extends React.Component<PropTypes, StateTypes> {
       if (position) {
         this.setState({ y: 0 - position.top * SPEED });
       }
-      // document.getElementById(id).style.transform = `translateY(${
-      //   0 - position.top * SPEED
-      // }px)`;
     }
   };
 
@@ -79,14 +74,12 @@ class Parallax extends React.Component<PropTypes, StateTypes> {
     const { className, children } = this.props;
 
     return (
-      // <VizSensor partialVisibility onChange={this.handleVisibilityChange}>
       <VisibilitySensor onChange={this.handleVisibilityChange} threshold={120}>
         <div className={classNames([styles.wrapper, className])} ref={this.ref}>
           {this.renderImage()}
           {children}
         </div>
       </VisibilitySensor>
-      // </VizSensor>
     );
   }
 }
