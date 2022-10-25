@@ -20,7 +20,8 @@ class Intro extends React.Component {
               I&apos;m Romi
             </h2>
             <h4 className="typography-headline4">
-              web designer <br />& developer.
+              full stack <br />
+              web developer.
             </h4>
           </ViewportContainer>
         </Parallax>

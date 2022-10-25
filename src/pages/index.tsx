@@ -8,8 +8,8 @@ import Abilities from '../ui/home/abilities';
 import About from '../ui/home/about';
 import Contact from '../ui/home/contact';
 import Intro from '../ui/home/intro';
-import Skills from '../ui/home/skills';
-import Work from '../ui/home/work';
+// import Skills from '../ui/home/skills';
+// import Work from '../ui/home/work';
 import Layout from '../ui/layout';
 
 const Home: NextPage = () => {
@@ -48,8 +48,8 @@ const Home: NextPage = () => {
       <Intro />
       <About />
       <Abilities />
-      <Skills skills={skills || []} />
-      <Work projects={projects || []} />
+      {/* <Skills skills={skills || []} />
+      <Work projects={projects || []} /> */}
       <Contact />
     </Layout>
   );

@@ -1,4 +1,5 @@
 export interface EmailData {
+  body: string;
   from: string;
   replyTo: string;
   subject: string;

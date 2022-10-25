@@ -12,7 +12,7 @@ const HEADER_HEIGHT = 80;
 const SECTIONS = [
   { id: 'home', name: 'Home' },
   { id: 'about', name: 'About' },
-  { id: 'work', name: 'Work' },
+  // { id: 'work', name: 'Work' },
   { id: 'contact', name: 'Contact' },
 ];
 
@@ -29,9 +29,6 @@ class Header extends React.Component<PropTypes, StateTypes> {
   constructor(props: PropTypes) {
     super(props);
     this.state = { menuOpen: false };
-    // this.smoothScroll = this.smoothScroll.bind(this)
-    // this.handleScroll = this.handleScroll.bind(this)
-    // this.handleMenuToggle = this.handleMenuToggle.bind(this)
   }
 
   get isHome(): boolean {

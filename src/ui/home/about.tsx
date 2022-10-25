@@ -14,15 +14,22 @@ class About extends React.Component {
           <div className={styles.text}>
             <div className={styles['profile-pic']}></div>
             <p className="typography-body">
-              Full stack developer with over 10 years experience working with
-              different companies and technologies.
+              I&apos;m a Senior Full Stack Engineer that has been in the
+              software industry since 2008. I&apos;ve worked with a diversity of
+              technologies and in the last couple of years I&apos;ve been
+              focusing my career towards the frontend development as I&apos;m
+              also passionate about product and design.
               <br />
-              Proactive and deeply analytical, as well as creative, curious and
-              detail-oriented. I have a great autodidact ability, as I’m always
-              looking to learn new things to improve my work.
+              <br />
+              I&apos;m proactive and deeply analytical, I&apos;m always thinking
+              outside the box to solve the current problem considering all
+              posible edge cases and side effects. I also pay a lot of attention
+              to the details and focus on best practices to have a clean,
+              efficient and scalable code and delivery high-quality results.
               <br />
               <br />
-              Currently working at MURAL as a full stack developer.
+              Currently working at MURAL and living as a digital nomad since
+              2020.
             </p>
           </div>
 

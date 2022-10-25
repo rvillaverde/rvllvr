@@ -18,10 +18,12 @@ const template = mailer.getTemplate(CONTACT_TEMPLATE);
 console.log('*** mailgun template', template);
 
 const sendEmail = async (emailData: EmailData) => {
-  const { to, variables } = emailData;
+  const { body, subject, to, variables } = emailData;
 
   if (typeof template !== 'boolean') {
     mailer.sendFromTemplate(to, template, variables);
+  } else {
+    mailer.send(to, subject, body);
   }
   // return new Promise((resolve, reject) => {
   //   mailgun.
@@ -41,6 +43,7 @@ const emailService = {
   contact: async (contact: Contact) => {
     console.log('email service - contact', contact);
     const emailData: EmailData = {
+      body: contact.message,
       from: 'Romi Villaverde Web <no-reply@romivillaverde.com>',
       to: EMAIL as string,
       subject: `[RVLLVR] Nuevo mensaje de ${contact.name}`,

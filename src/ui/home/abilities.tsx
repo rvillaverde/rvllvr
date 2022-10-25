@@ -61,7 +61,7 @@ class Abilities extends React.Component<{}, StateTypes> {
                 <AbilityIcon_1 />
               </div>
               <p className={classNames([styles.caption, 'typography-body'])}>
-                Full stack developer with an eye on design
+                Full stack software engineer with an eye on product and design
               </p>
             </div>
             <div className={styles.ability} style={this.abilityStyle('0.3')}>
@@ -77,7 +77,7 @@ class Abilities extends React.Component<{}, StateTypes> {
                 <AbilityIcon_3 />
               </div>
               <p className={classNames([styles.caption, 'typography-body'])}>
-                Building modern apps with the latest technologies
+                Fan of clean, reusable and scalable code
               </p>
             </div>
           </div>

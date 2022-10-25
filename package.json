@@ -3,23 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server.ts",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.ts",
     "lint": "next lint"
   },
   "dependencies": {
     "airtable": "^0.11.5",
     "classnames": "^2.3.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "i": "^0.3.7",
     "next": "12.3.1",
+    "nodemon": "^2.0.20",
     "npm": "^8.19.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.55.0",
-    "ts-mailgun": "^0.5.1"
+    "ts-mailgun": "^0.5.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
     "@types/node": "18.11.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
