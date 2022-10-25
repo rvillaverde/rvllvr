@@ -20,7 +20,7 @@ const Textarea: React.FunctionComponent<PropTypes> = ({
   value,
 }) => {
   const handleChange = (e?: ChangeEvent<HTMLTextAreaElement>) => {
-    if (e?.target.value) {
+    if (e?.target) {
       onChange(e.target.value);
     }
   };
