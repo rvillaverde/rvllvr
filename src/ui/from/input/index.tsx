@@ -44,7 +44,7 @@ function createInput<T extends InputType>() {
     value,
   }) => {
     const handleChange = (e?: ChangeEvent<HTMLInputElement>) => {
-      if (e?.target.value) {
+      if (e?.target) {
         onChange(e.target.value as Type<T>);
       }
     };

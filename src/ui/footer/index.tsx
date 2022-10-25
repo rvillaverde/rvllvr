@@ -91,7 +91,7 @@ class Footer extends React.Component<{}, StateTypes> {
           </a>
         </p>
         <p className={styles.info}>
-          <span className="caption">©2020 - Romina Villaverde</span>
+          <span className="caption">©2022 - Romina Villaverde</span>
         </p>
       </footer>
     );
